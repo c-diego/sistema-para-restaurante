@@ -285,7 +285,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -363,8 +363,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(jTable8);
         if (jTable8.getColumnModel().getColumnCount() > 0) {
-            jTable8.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable8.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable8.getColumnModel().getColumn(0).setMinWidth(150);
+            jTable8.getColumnModel().getColumn(0).setMaxWidth(150);
         }
 
         jTextField27.setBackground(new java.awt.Color(255, 255, 255));
@@ -508,41 +508,41 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(70, 70, 70));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Número", "Data", "Cliente", "Preço"
+                "Número", "Cliente", "Preço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -552,9 +552,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Preço");
+            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(150);
         }
 
         jTable7.setForeground(new java.awt.Color(70, 70, 70));
@@ -588,8 +589,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jTable7.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(jTable7);
         if (jTable7.getColumnModel().getColumnCount() > 0) {
-            jTable7.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable7.getColumnModel().getColumn(2).setMaxWidth(200);
+            jTable7.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable7.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable7.getColumnModel().getColumn(2).setMinWidth(150);
+            jTable7.getColumnModel().getColumn(2).setMaxWidth(150);
         }
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
@@ -1273,28 +1276,28 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jTable4.setForeground(new java.awt.Color(70, 70, 70));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Nome", "Login", "Última Alteração"
+                "Nome", "Login"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1506,26 +1509,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_alt_menu_rm1;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1545,8 +1536,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1558,8 +1547,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanel_cardapio;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1570,30 +1557,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
-    private javax.swing.JTable jTable9;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable jtable_ven_menu;
     private javax.swing.JLabel lab_selected_customer;
     private javax.swing.JPasswordField pswd_senha;
-    private javax.swing.JPasswordField pswd_senha1;
-    private javax.swing.JPasswordField pswd_senha2;
     private javax.swing.JTextField txtf_acompanhamento;
     private javax.swing.JTextField txtf_carne;
     private javax.swing.JTextField txtf_preco;
