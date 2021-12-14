@@ -33,26 +33,27 @@ public class PratoDAO {
                 + " OR carne like ? OR salada like ? OR acompanhamento like ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setString(1,"%"+ termo + "%");
-        ps.setString(1,"%"+ termo + "%");
-        ps.setString(1,"%"+ termo + "%");
-        ps.setString(1,"%"+ termo + "%");
+        ps.setString(2,"%"+ termo + "%");
+        ps.setString(3,"%"+ termo + "%");
+        ps.setString(4,"%"+ termo + "%");
+        ps.setString(5,"%"+ termo + "%");
         ResultSet rs = ps.executeQuery();
-        List<Cliente> clientes = new ArrayList<>();
+        List<Prato> pratos = new ArrayList<>();
         while(rs.next()) {
-            clientes.add(new Cliente(rs.getString("nome"), rs.getString("sobrenome"),
-                    rs.getString("telefone"), rs.getString("estado"), rs.getString("cidade"),
-            rs.getString("bairro"), rs.getString("rua"), rs.getInt("numero"), rs.getInt("qtnPedidos")));
+            pratos.add(new Prato(rs.getString("principal"), rs.getString("secundario"),
+                    rs.getString("carne"), rs.getString("salada"), rs.getString("acompanhamento"),
+                    rs.getFloat("preco")));
         }
         ps.execute();
         rs.close();
         ps.close(); 
         conexao.close();
-        return clientes;
+        return pratos;
     }
     
     public void remover(int id) throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql = "DELETE FROM cliente WHERE id=?";
+        String sql = "DELETE FROM prato WHERE id=?";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setInt(1, id);
         ps.executeUpdate();
@@ -60,19 +61,18 @@ public class PratoDAO {
         conexao.close();
     }
     
-    public void alterar(Cliente cliente) throws SQLException {
+    public void alterar(Prato prato) throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql="UPDATE cliente SET nome=?,sobrenome=?,estado=?, cidade=?" +
-                ", bairro=?, rua=?, numero=? where id=?";
+        String sql="UPDATE prato SET principal=?,secundario=?,carne=?, salada=?" +
+                ", acompanhamento=?, preco=? where id=?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setString(1, cliente.getNome());
-        ps.setString(2, cliente.getSobrenome());
-        ps.setString(3, cliente.getEstado());
-        ps.setString(4, cliente.getCidade());
-        ps.setString(5, cliente.getBairro());
-        ps.setString(6, cliente.getRua());
-        ps.setInt(7, cliente.getNumero());
-        ps.setInt(8, cliente.getId());
+        ps.setString(1, prato.getPrincipal());
+        ps.setString(2, prato.getSecundario());
+        ps.setString(3, prato.getCarne());
+        ps.setString(4, prato.getSalada());
+        ps.setString(5, prato.getAcompanhamento());
+        ps.setFloat(6, prato.getPreco());
+        ps.setInt(7, prato.getId());
         ps.executeUpdate();
         ps.close();
         conexao.close();
