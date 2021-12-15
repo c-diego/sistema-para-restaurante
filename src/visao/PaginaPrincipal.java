@@ -14,7 +14,6 @@ import modelo.Usuario;
 
 public class PaginaPrincipal extends javax.swing.JFrame {
 
-    private int teste;
     private Usuario usuario;
     private UsuarioDAO usuarioDao = new UsuarioDAO();
     private List<Usuario> usuarios;
@@ -1756,7 +1755,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 cidade, 
                 bairro,
                 rua,
-                numero
+                numero,
+                0
             );
             
             try {
@@ -1903,6 +1903,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     cliente.getSobrenome(),
                     cliente.getTelefone(),
                     cliente.getEstado(),
+                    cliente.getCidade(),
                     cliente.getBairro(),
                     cliente.getRua(),
                     cliente.getNumero()

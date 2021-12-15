@@ -20,9 +20,10 @@ public class ClienteDAO {
         ps.setString(3, cliente.getTelefone());
         ps.setString(4, cliente.getEstado());
         ps.setString(5, cliente.getCidade());
-        ps.setString(6, cliente.getRua());
-        ps.setInt(7, cliente.getNumero());
-        ps.setInt(8, 0);
+        ps.setString(6, cliente.getBairro());
+        ps.setString(7, cliente.getRua());
+        ps.setInt(8, cliente.getNumero());
+        ps.setInt(9, 0);
         ps.execute();
         ps.close();
         conexao.close();
@@ -59,11 +60,12 @@ public class ClienteDAO {
     
     public void alterar(Cliente cliente) throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql="UPDATE cliente SET nome=?,sobrenome=?,estado=?, cidade=?" +
+        String sql="UPDATE cliente SET nome=?,sobrenome=?, telefone=?, estado=?, cidade=?" +
                 ", bairro=?, rua=?, numero=? where id=?";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setString(1, cliente.getNome());
         ps.setString(2, cliente.getSobrenome());
+        ps.setString(3, cliente.getTelefone());
         ps.setString(3, cliente.getEstado());
         ps.setString(4, cliente.getCidade());
         ps.setString(5, cliente.getBairro());
