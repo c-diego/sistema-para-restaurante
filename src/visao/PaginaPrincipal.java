@@ -398,6 +398,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setOpaque(true);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setForeground(new java.awt.Color(70, 70, 70));
@@ -1760,6 +1765,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        atualizarTabelaSelecionaCliente();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     private void habilitarFormulario(boolean status){
         txtf_principal.setEnabled(status);
         txtf_secundario.setEnabled(status);
@@ -1819,6 +1828,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     cliente.getBairro(),
                     cliente.getRua(),
                     cliente.getNumero(),
+                });
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    private void atualizarTabelaSelecionaCliente(){
+        try{
+            clientes=clienteDao.buscarPeloNome(jTextField27.getText());
+            DefaultTableModel model= (DefaultTableModel)jTable8.getModel();
+            model.setNumRows(0);
+            for (int i = 0; i < clientes.size(); i++) {
+                Cliente cliente=clientes.get(i);
+                model.addRow(new Object[]{
+                    cliente.getNome(),
+                    cliente.getTelefone(),
                 });
             }
         }catch(SQLException ex){
