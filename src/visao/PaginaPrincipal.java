@@ -14,6 +14,7 @@ import modelo.Usuario;
 
 public class PaginaPrincipal extends javax.swing.JFrame {
 
+    private int teste;
     private Usuario usuario;
     private UsuarioDAO usuarioDao = new UsuarioDAO();
     private List<Usuario> usuarios;
@@ -1687,7 +1688,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      
      
      
-//######################################### Tela Clientes #######################################################
+//######################################### Tela Clientes ######################################################
     private void btn_cliente_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cliente_okActionPerformed
 
         String nome = txtf_cliente_nome.getText();
