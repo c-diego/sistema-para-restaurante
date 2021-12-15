@@ -162,6 +162,7 @@ public class PaginaLogin extends javax.swing.JFrame {
                         "Erro", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Ops... Algo deu errado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
             }
         }
 

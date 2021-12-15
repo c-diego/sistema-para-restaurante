@@ -4,6 +4,7 @@ package visao;
 
 import dao.ClienteDAO;
 import dao.PratoDAO;
+import dao.UsuarioDAO;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,6 +17,9 @@ import modelo.Usuario;
 public class PaginaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuario;
+    private UsuarioDAO usuarioDao = new UsuarioDAO();
+    private List<Usuario> usuarios;
+    private Usuario usuarioSelecionado;
     
     private ClienteDAO clienteDao = new ClienteDAO();
     private List<Cliente> clientes;
@@ -40,6 +44,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(3, true);
             jTabbedPane1.setEnabledAt(4, false);
             jTabbedPane1.setEnabledAt(5, false);
+            atualizar_vender_tabela();
             
         } else {
             jTabbedPane1.setEnabledAt(0, true);
@@ -48,6 +53,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(3, true);
             jTabbedPane1.setEnabledAt(4, true);
             jTabbedPane1.setEnabledAt(5, true);
+            atualizar_alt_tabela();
+            atualizar_vender_tabela();
+            atualizar_usuario_tabela();
             
         }
     }
@@ -138,19 +146,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         txtf_salada = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        jButton27 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        btn_alt_gerente_add = new javax.swing.JButton();
+        btn_alt_gerente_rm = new javax.swing.JButton();
+        btn_alt_gerente_alt = new javax.swing.JButton();
+        btn_alt_gerente_can = new javax.swing.JButton();
+        btn_alt_gerente_ok = new javax.swing.JButton();
         jTextField26 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        jtable_usuario = new javax.swing.JTable();
+        txtf_nome = new javax.swing.JTextField();
+        txtf_login = new javax.swing.JTextField();
         pswd_senha = new javax.swing.JPasswordField();
+        cbox_cargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quentinhas");
@@ -1212,50 +1220,75 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton27.setBackground(new java.awt.Color(40, 148, 198));
-        jButton27.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton27.setForeground(new java.awt.Color(70, 70, 70));
-        jButton27.setText("Cadastrar");
-        jButton27.setBorder(null);
-        jButton27.setBorderPainted(false);
-        jButton27.setContentAreaFilled(false);
-        jButton27.setOpaque(true);
+        btn_alt_gerente_add.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_add.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_add.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_add.setText("Cadastrar");
+        btn_alt_gerente_add.setBorder(null);
+        btn_alt_gerente_add.setBorderPainted(false);
+        btn_alt_gerente_add.setContentAreaFilled(false);
+        btn_alt_gerente_add.setOpaque(true);
+        btn_alt_gerente_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_addActionPerformed(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(40, 148, 198));
-        jButton9.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(70, 70, 70));
-        jButton9.setText("Excluir");
-        jButton9.setBorder(null);
-        jButton9.setBorderPainted(false);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setOpaque(true);
+        btn_alt_gerente_rm.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_rm.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_rm.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_rm.setText("Excluir");
+        btn_alt_gerente_rm.setBorder(null);
+        btn_alt_gerente_rm.setBorderPainted(false);
+        btn_alt_gerente_rm.setContentAreaFilled(false);
+        btn_alt_gerente_rm.setOpaque(true);
+        btn_alt_gerente_rm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_rmActionPerformed(evt);
+            }
+        });
 
-        jButton14.setBackground(new java.awt.Color(40, 148, 198));
-        jButton14.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(70, 70, 70));
-        jButton14.setText("Alterar");
-        jButton14.setBorder(null);
-        jButton14.setBorderPainted(false);
-        jButton14.setContentAreaFilled(false);
-        jButton14.setOpaque(true);
+        btn_alt_gerente_alt.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_alt.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_alt.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_alt.setText("Alterar");
+        btn_alt_gerente_alt.setBorder(null);
+        btn_alt_gerente_alt.setBorderPainted(false);
+        btn_alt_gerente_alt.setContentAreaFilled(false);
+        btn_alt_gerente_alt.setOpaque(true);
+        btn_alt_gerente_alt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_altActionPerformed(evt);
+            }
+        });
 
-        jButton15.setBackground(new java.awt.Color(255, 100, 100));
-        jButton15.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(70, 70, 70));
-        jButton15.setText("Cancelar");
-        jButton15.setBorder(null);
-        jButton15.setBorderPainted(false);
-        jButton15.setContentAreaFilled(false);
-        jButton15.setOpaque(true);
+        btn_alt_gerente_can.setBackground(new java.awt.Color(255, 100, 100));
+        btn_alt_gerente_can.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_can.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_can.setText("Cancelar");
+        btn_alt_gerente_can.setBorder(null);
+        btn_alt_gerente_can.setBorderPainted(false);
+        btn_alt_gerente_can.setContentAreaFilled(false);
+        btn_alt_gerente_can.setOpaque(true);
+        btn_alt_gerente_can.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_canActionPerformed(evt);
+            }
+        });
 
-        jButton16.setBackground(new java.awt.Color(0, 255, 144));
-        jButton16.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton16.setForeground(new java.awt.Color(70, 70, 70));
-        jButton16.setText("Salvar");
-        jButton16.setBorder(null);
-        jButton16.setBorderPainted(false);
-        jButton16.setContentAreaFilled(false);
-        jButton16.setOpaque(true);
+        btn_alt_gerente_ok.setBackground(new java.awt.Color(0, 255, 144));
+        btn_alt_gerente_ok.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_ok.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_ok.setText("Salvar");
+        btn_alt_gerente_ok.setBorder(null);
+        btn_alt_gerente_ok.setBorderPainted(false);
+        btn_alt_gerente_ok.setContentAreaFilled(false);
+        btn_alt_gerente_ok.setOpaque(true);
+        btn_alt_gerente_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_okActionPerformed(evt);
+            }
+        });
 
         jTextField26.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField26.setForeground(new java.awt.Color(70, 70, 70));
@@ -1271,8 +1304,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton10.setContentAreaFilled(false);
         jButton10.setOpaque(true);
 
-        jTable4.setForeground(new java.awt.Color(70, 70, 70));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_usuario.setForeground(new java.awt.Color(70, 70, 70));
+        jtable_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -1302,22 +1335,24 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(jtable_usuario);
 
-        jTextField6.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(70, 70, 70));
-        jTextField6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
+        txtf_nome.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        txtf_nome.setForeground(new java.awt.Color(70, 70, 70));
+        txtf_nome.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        jTextField7.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(70, 70, 70));
-        jTextField7.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
-
-        jTextField8.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(70, 70, 70));
-        jTextField8.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Telefone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
+        txtf_login.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        txtf_login.setForeground(new java.awt.Color(70, 70, 70));
+        txtf_login.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
         pswd_senha.setForeground(new java.awt.Color(70, 70, 70));
         pswd_senha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
+
+        cbox_cargo.setBackground(new java.awt.Color(255, 255, 255));
+        cbox_cargo.setForeground(new java.awt.Color(70, 70, 70));
+        cbox_cargo.setMaximumRowCount(2);
+        cbox_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Gerente" }));
+        cbox_cargo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1328,68 +1363,68 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-                            .addComponent(jTextField6))
+                        .addComponent(txtf_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pswd_senha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(txtf_login, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                                .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_alt_gerente_add, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_alt_gerente_rm, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_alt_gerente_alt, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_alt_gerente_can, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_alt_gerente_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addGap(181, 181, 181)
                                 .addComponent(jTextField26)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton10)))))
+                                .addComponent(jButton10))))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(pswd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbox_cargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton10, jButton16});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_alt_gerente_ok, jButton10});
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField6, jTextField7, jTextField8, pswd_senha});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pswd_senha, txtf_login, txtf_nome});
 
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pswd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtf_login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pswd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbox_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_alt_gerente_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alt_gerente_can, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alt_gerente_alt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alt_gerente_add, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alt_gerente_rm, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton10, jButton16, jTextField26});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_alt_gerente_ok, jButton10, jTextField26});
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField7, jTextField8, pswd_senha});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbox_cargo, pswd_senha, txtf_login});
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1442,8 +1477,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_logoutActionPerformed
 
+    //Botões da tela Cardapio
     private void btn_alt_menu_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_addActionPerformed
-        habilitarFormulario(true);
+        habilitarFormularioCardapio(true);
         pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_addActionPerformed
 
@@ -1460,7 +1496,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         try {
             pratoDao.remover(pratoSelecionado.getId());
             JOptionPane.showMessageDialog(null, "Prato excluido com sucesso");
-            atualizarTabela();
+            atualizar_alt_tabela();
+            atualizar_vender_tabela();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -1474,7 +1511,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             return;
         }
         
-        habilitarFormulario(true);
+        habilitarFormularioCardapio(true);
         
         pratoSelecionado = pratos.get(linha);
         
@@ -1487,12 +1524,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_alt_menu_altActionPerformed
 
     private void btn_alt_menu_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_canActionPerformed
-        habilitarFormulario(false);
+        habilitarFormularioCardapio(false);
         pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_canActionPerformed
 
     private void btn_alt_menu_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_okActionPerformed
-        habilitarFormulario(false);
+        habilitarFormularioCardapio(false);
         
         String principal = txtf_principal.getText();
         String segundario = txtf_secundario.getText();
@@ -1552,6 +1589,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 pratoDao.adicionar(prato);
                 
                 JOptionPane.showMessageDialog(null, "Prato cadastrado");
+                atualizar_alt_tabela();
+                atualizar_vender_tabela();
                 
                 txtf_principal.setText("");
                 txtf_secundario.setText("");
@@ -1574,7 +1613,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             try {
                 pratoDao.alterar(pratoSelecionado);
                 JOptionPane.showMessageDialog(null, "Prato Alterado!");
-                atualizarTabela();
+                atualizar_alt_tabela();
+                atualizar_vender_tabela();
 
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -1584,6 +1624,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_okActionPerformed
 
+    //Botões da Tela Clientes
     private void btn_alt_menu_ok_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok_clienteActionPerformed
         habilitarFormularioCliente(false);
         
@@ -1744,6 +1785,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         clienteSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_add_clienteActionPerformed
 
+    // ?
     private void btn_alt_menu_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok2ActionPerformed
         pesquisarCliente();
     }//GEN-LAST:event_btn_alt_menu_ok2ActionPerformed
@@ -1760,13 +1802,132 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void habilitarFormulario(boolean status){
+    //Botões da tela Gerente
+    private void btn_alt_gerente_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_addActionPerformed
+        //atualizarBotaoGerente(false); implementar
+        habilitarFormularioGerente(true);
+        usuarioSelecionado = null;
+    }//GEN-LAST:event_btn_alt_gerente_addActionPerformed
+
+    private void btn_alt_gerente_rmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_rmActionPerformed
+        int linha = jtable_usuario.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        usuarioSelecionado = usuarios.get(linha);
+        try {
+            
+            usuarioDao.remover(usuarioSelecionado.getId());
+            JOptionPane.showMessageDialog(null, "Pessoa excluida com sucesso");
+            atualizar_usuario_tabela();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_alt_gerente_rmActionPerformed
+
+    private void btn_alt_gerente_altActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_altActionPerformed
+        int linha = jtable_usuario.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        //atualizarBotaoGerente(false); implementar
+        habilitarFormularioGerente(true);
+        
+        usuarioSelecionado = usuarios.get(linha);
+        txtf_nome.setText(usuarioSelecionado.getNome());
+        txtf_login.setText(usuarioSelecionado.getLogin());
+        cbox_cargo.setSelectedIndex(usuarioSelecionado.getPermissao() - 1);
+    }//GEN-LAST:event_btn_alt_gerente_altActionPerformed
+
+    private void btn_alt_gerente_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_canActionPerformed
+        //atualizarBotaoGerente(true); implementar
+        habilitarFormularioGerente(false);
+        usuarioSelecionado = null;
+        txtf_nome.setText("");
+        txtf_login.setText("");
+    }//GEN-LAST:event_btn_alt_gerente_canActionPerformed
+
+    private void btn_alt_gerente_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_okActionPerformed
+        //atualizarBotaoGerente(true); implementar
+        habilitarFormularioGerente(!false);
+        
+        String nome = txtf_nome.getText();
+        String login = txtf_login.getText();
+        String senha = String.valueOf(pswd_senha.getPassword());
+        int permissao = cbox_cargo.getSelectedIndex() + 1;
+
+        if (nome.length() == 0) {
+            JOptionPane.showMessageDialog(null, "informe um nome.", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (login.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Informe um login", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+
+        }
+        if (senha.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Senha muito curta.", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (usuarioSelecionado == null) {
+            Usuario usuario = new Usuario(nome, login, senha, permissao);
+
+            try {
+                usuarioDao.adicionar(usuario);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrada");
+                txtf_nome.setText("");
+                txtf_login.setText("");
+                pswd_senha.setText("");
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "erro ao inserir no banco de dados",
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+
+            }
+        } else {
+            usuarioSelecionado.setNome(nome);
+            usuarioSelecionado.setLogin(login);
+            usuarioSelecionado.setSenha(senha);
+            usuarioSelecionado.setPermissao(permissao);
+
+            try {
+                usuarioDao.alterar(usuarioSelecionado);
+                JOptionPane.showMessageDialog(null, "Usuário Alterada");
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+        usuarioSelecionado = null;
+        atualizar_usuario_tabela();
+    }//GEN-LAST:event_btn_alt_gerente_okActionPerformed
+
+    private void habilitarFormularioCardapio(boolean status){
         txtf_principal.setEnabled(status);
         txtf_secundario.setEnabled(status);
         txtf_carne.setEnabled(status);
         txtf_salada.setEnabled(status);
         txtf_acompanhamento.setEnabled(status);
         txtf_preco.setEnabled(status);
+    }
+    
+        private void habilitarFormularioGerente(boolean status){
+        txtf_nome.setEnabled(status);
+        txtf_login.setEnabled(status);
+        cbox_cargo.setEnabled(status);
+        pswd_senha.setEnabled(status);
     }
     
     private void habilitarFormularioCliente(boolean status){
@@ -1780,11 +1941,51 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         txtf_cliente_numero.setEnabled(status);
     }
     
-    private void atualizarTabela(){
+    private void atualizar_alt_tabela(){
         try {
             pratos = pratoDao.buscar("");
             DefaultTableModel model = 
                     (DefaultTableModel) Jtable_alterar_menu.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < pratos.size(); i++){
+                Prato prato = pratos.get(i);
+                model.addRow(new Object[]{
+                    prato.getPrincipal(),
+                    prato.getSecundario(),
+                    prato.getCarne(),
+                    prato.getSalada(),
+                    prato.getAcompanhamento(),
+                    prato.getPreco(),
+                });
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    private void atualizar_usuario_tabela(){
+        try {
+            usuarios = usuarioDao.buscarPeloNome("");
+            DefaultTableModel model = 
+                    (DefaultTableModel) jtable_usuario.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < usuarios.size(); i++){
+                Usuario usuario_linha = usuarios.get(i);
+                model.addRow(new Object[]{
+                    usuario_linha.getNome(),
+                    usuario_linha.getLogin()
+                });
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    private void atualizar_vender_tabela(){
+        try {
+            pratos = pratoDao.buscar("");
+            DefaultTableModel model = 
+                    (DefaultTableModel) jtable_ven_menu.getModel();
             model.setNumRows(0);
             for(int i = 0;i < pratos.size(); i++){
                 Prato prato = pratos.get(i);
@@ -1829,6 +2030,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable_alterar_menu;
     private javax.swing.JTable Jtable_alterar_menu_cliente;
+    private javax.swing.JButton btn_alt_gerente_add;
+    private javax.swing.JButton btn_alt_gerente_alt;
+    private javax.swing.JButton btn_alt_gerente_can;
+    private javax.swing.JButton btn_alt_gerente_ok;
+    private javax.swing.JButton btn_alt_gerente_rm;
     private javax.swing.JButton btn_alt_menu_add;
     private javax.swing.JButton btn_alt_menu_add_cliente;
     private javax.swing.JButton btn_alt_menu_alt;
@@ -1841,18 +2047,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_alt_menu_rm;
     private javax.swing.JButton btn_alt_menu_rm_cliente;
     private javax.swing.JButton btn_logout;
+    private javax.swing.JComboBox<String> cbox_cargo;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1889,16 +2091,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable jtable_usuario;
     private javax.swing.JTable jtable_ven_menu;
     private javax.swing.JLabel lab_selected_customer;
     private javax.swing.JPasswordField pswd_senha;
@@ -1912,6 +2111,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtf_cliente_rua;
     private javax.swing.JTextField txtf_cliente_sobrenome;
     private javax.swing.JTextField txtf_cliente_telefone;
+    private javax.swing.JTextField txtf_login;
+    private javax.swing.JTextField txtf_nome;
     private javax.swing.JTextField txtf_pesquisar;
     private javax.swing.JTextField txtf_preco;
     private javax.swing.JTextField txtf_principal;
