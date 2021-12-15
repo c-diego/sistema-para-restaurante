@@ -1033,21 +1033,21 @@
                                       <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btn_alt_menu_add_cliente" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_add" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_rm_cliente" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_rm" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_alt_cliente" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_alt" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_can_cliente" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_can" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_ok_cliente" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_ok" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                                              <Component id="txtf_pesquisar" max="32767" attributes="0"/>
+                                              <Component id="txtf_cliente_pesquisar" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_ok2" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_cliente_pesquisar" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1081,18 +1081,18 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btn_alt_menu_ok2" pref="37" max="32767" attributes="0"/>
-                                  <Component id="txtf_pesquisar" max="32767" attributes="0"/>
+                                  <Component id="btn_cliente_pesquisar" pref="37" max="32767" attributes="0"/>
+                                  <Component id="txtf_cliente_pesquisar" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jScrollPane13" min="-2" pref="236" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_alt_menu_ok_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_alt_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_can_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_rm_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_add_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_cliente_ok" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_cliente_alt" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_cliente_can" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_cliente_rm" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_cliente_add" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1100,10 +1100,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_ok_cliente">
+                    <Component class="javax.swing.JButton" name="btn_cliente_ok">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="90" green="ff" red="0" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1115,18 +1115,16 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_ok_clienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_okActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_alt_cliente">
+                    <Component class="javax.swing.JButton" name="btn_cliente_alt">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="c6" green="94" red="28" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1138,18 +1136,16 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_alt_clienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_altActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_can_cliente">
+                    <Component class="javax.swing.JButton" name="btn_cliente_can">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="64" green="64" red="ff" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1161,18 +1157,16 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_can_clienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_canActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_rm_cliente">
+                    <Component class="javax.swing.JButton" name="btn_cliente_rm">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="c6" green="94" red="28" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1184,18 +1178,16 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_rm_clienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_rmActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_add_cliente">
+                    <Component class="javax.swing.JButton" name="btn_cliente_add">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="c6" green="94" red="28" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1207,12 +1199,10 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_add_clienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_addActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtf_cliente_nome">
@@ -1245,7 +1235,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="Jtable_alterar_menu_cliente">
+                        <Component class="javax.swing.JTable" name="Jtable_cliente">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="c8" green="c8" red="c8" type="rgb"/>
@@ -1477,10 +1467,10 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_ok2">
+                    <Component class="javax.swing.JButton" name="btn_cliente_pesquisar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="90" green="ff" red="0" type="rgb"/>
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="1"/>
@@ -1492,15 +1482,13 @@
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
-                        <Property name="borderPainted" type="boolean" value="false"/>
-                        <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_ok2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cliente_pesquisarActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_pesquisar">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_pesquisar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
