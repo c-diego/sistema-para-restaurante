@@ -56,6 +56,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             atualizar_alt_tabela();
             atualizar_vender_tabela();
             atualizar_usuario_tabela();
+            atualizarBotaoGerente(true);
+            habilitarFormularioGerente(false);
             
         }
     }
@@ -151,8 +153,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         btn_alt_gerente_alt = new javax.swing.JButton();
         btn_alt_gerente_can = new javax.swing.JButton();
         btn_alt_gerente_ok = new javax.swing.JButton();
-        jTextField26 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        txtf_gerente_pesquisar = new javax.swing.JTextField();
+        btn_alt_gerente_pesquisar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jtable_usuario = new javax.swing.JTable();
         txtf_nome = new javax.swing.JTextField();
@@ -1220,13 +1222,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_alt_gerente_add.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_add.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_gerente_add.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_gerente_add.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_gerente_add.setText("Cadastrar");
         btn_alt_gerente_add.setBorder(null);
-        btn_alt_gerente_add.setBorderPainted(false);
-        btn_alt_gerente_add.setContentAreaFilled(false);
         btn_alt_gerente_add.setOpaque(true);
         btn_alt_gerente_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1234,13 +1234,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_gerente_rm.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_rm.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_gerente_rm.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_gerente_rm.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_gerente_rm.setText("Excluir");
         btn_alt_gerente_rm.setBorder(null);
-        btn_alt_gerente_rm.setBorderPainted(false);
-        btn_alt_gerente_rm.setContentAreaFilled(false);
         btn_alt_gerente_rm.setOpaque(true);
         btn_alt_gerente_rm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1248,13 +1246,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_gerente_alt.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_gerente_alt.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_gerente_alt.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_gerente_alt.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_gerente_alt.setText("Alterar");
         btn_alt_gerente_alt.setBorder(null);
-        btn_alt_gerente_alt.setBorderPainted(false);
-        btn_alt_gerente_alt.setContentAreaFilled(false);
         btn_alt_gerente_alt.setOpaque(true);
         btn_alt_gerente_alt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1262,13 +1258,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_gerente_can.setBackground(new java.awt.Color(255, 100, 100));
+        btn_alt_gerente_can.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_gerente_can.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_gerente_can.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_gerente_can.setText("Cancelar");
         btn_alt_gerente_can.setBorder(null);
-        btn_alt_gerente_can.setBorderPainted(false);
-        btn_alt_gerente_can.setContentAreaFilled(false);
         btn_alt_gerente_can.setOpaque(true);
         btn_alt_gerente_can.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1276,13 +1270,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_gerente_ok.setBackground(new java.awt.Color(0, 255, 144));
+        btn_alt_gerente_ok.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_gerente_ok.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_gerente_ok.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_gerente_ok.setText("Salvar");
         btn_alt_gerente_ok.setBorder(null);
-        btn_alt_gerente_ok.setBorderPainted(false);
-        btn_alt_gerente_ok.setContentAreaFilled(false);
         btn_alt_gerente_ok.setOpaque(true);
         btn_alt_gerente_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1290,19 +1282,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextField26.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        jTextField26.setForeground(new java.awt.Color(70, 70, 70));
-        jTextField26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
-        jTextField26.setCaretColor(new java.awt.Color(70, 70, 70));
+        txtf_gerente_pesquisar.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        txtf_gerente_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        txtf_gerente_pesquisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
+        txtf_gerente_pesquisar.setCaretColor(new java.awt.Color(70, 70, 70));
 
-        jButton10.setBackground(new java.awt.Color(40, 148, 198));
-        jButton10.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(70, 70, 70));
-        jButton10.setText("Pesquisar");
-        jButton10.setBorder(null);
-        jButton10.setBorderPainted(false);
-        jButton10.setContentAreaFilled(false);
-        jButton10.setOpaque(true);
+        btn_alt_gerente_pesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_alt_gerente_pesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_alt_gerente_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        btn_alt_gerente_pesquisar.setText("Pesquisar");
+        btn_alt_gerente_pesquisar.setBorder(null);
+        btn_alt_gerente_pesquisar.setOpaque(true);
+        btn_alt_gerente_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alt_gerente_pesquisarActionPerformed(evt);
+            }
+        });
 
         jtable_usuario.setForeground(new java.awt.Color(70, 70, 70));
         jtable_usuario.setModel(new javax.swing.table.DefaultTableModel(
@@ -1381,9 +1376,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btn_alt_gerente_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                                 .addGap(181, 181, 181)
-                                .addComponent(jTextField26)
+                                .addComponent(txtf_gerente_pesquisar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton10))))
+                                .addComponent(btn_alt_gerente_pesquisar))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(pswd_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1391,7 +1386,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_alt_gerente_ok, jButton10});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_alt_gerente_ok, btn_alt_gerente_pesquisar});
 
         jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pswd_senha, txtf_login, txtf_nome});
 
@@ -1408,8 +1403,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(cbox_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10))
+                    .addComponent(txtf_gerente_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alt_gerente_pesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -1422,7 +1417,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_alt_gerente_ok, jButton10, jTextField26});
+        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_alt_gerente_ok, btn_alt_gerente_pesquisar, txtf_gerente_pesquisar});
 
         jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cbox_cargo, pswd_senha, txtf_login});
 
@@ -1804,7 +1799,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     //Botões da tela Gerente
     private void btn_alt_gerente_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_addActionPerformed
-        //atualizarBotaoGerente(false); implementar
+        atualizarBotaoGerente(false);
         habilitarFormularioGerente(true);
         usuarioSelecionado = null;
     }//GEN-LAST:event_btn_alt_gerente_addActionPerformed
@@ -1819,11 +1814,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         
         usuarioSelecionado = usuarios.get(linha);
         try {
-            
-            usuarioDao.remover(usuarioSelecionado.getId());
-            JOptionPane.showMessageDialog(null, "Pessoa excluida com sucesso");
-            atualizar_usuario_tabela();
-            
+            if (usuarioSelecionado.getId() == usuario.getId()) {
+                JOptionPane.showMessageDialog(null, "Não é possível excluir a conta logada.", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            } else {
+                usuarioDao.remover(usuarioSelecionado.getId());
+                JOptionPane.showMessageDialog(null, "Pessoa excluida com sucesso");
+                atualizar_usuario_tabela();
+            } 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -1837,7 +1835,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             return;
         }
         
-        //atualizarBotaoGerente(false); implementar
+        atualizarBotaoGerente(false);
         habilitarFormularioGerente(true);
         
         usuarioSelecionado = usuarios.get(linha);
@@ -1847,17 +1845,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_alt_gerente_altActionPerformed
 
     private void btn_alt_gerente_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_canActionPerformed
-        //atualizarBotaoGerente(true); implementar
+        atualizarBotaoGerente(true);
         habilitarFormularioGerente(false);
         usuarioSelecionado = null;
         txtf_nome.setText("");
         txtf_login.setText("");
+        pswd_senha.setText("");
     }//GEN-LAST:event_btn_alt_gerente_canActionPerformed
 
     private void btn_alt_gerente_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_okActionPerformed
-        //atualizarBotaoGerente(true); implementar
-        habilitarFormularioGerente(!false);
-        
+
         String nome = txtf_nome.getText();
         String login = txtf_login.getText();
         String senha = String.valueOf(pswd_senha.getPassword());
@@ -1884,11 +1881,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
             try {
                 usuarioDao.adicionar(usuario);
-                JOptionPane.showMessageDialog(null, "Usuário cadastrada");
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado");
                 txtf_nome.setText("");
                 txtf_login.setText("");
                 pswd_senha.setText("");
-
+                atualizarBotaoGerente(true);
+                habilitarFormularioGerente(!false);
+        
+                
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "erro ao inserir no banco de dados",
@@ -1903,7 +1903,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
             try {
                 usuarioDao.alterar(usuarioSelecionado);
-                JOptionPane.showMessageDialog(null, "Usuário Alterada");
+                JOptionPane.showMessageDialog(null, "Usuário Alterado");
+                atualizarBotaoGerente(true);
+                habilitarFormularioGerente(!false);
+        
 
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -1914,6 +1917,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         atualizar_usuario_tabela();
     }//GEN-LAST:event_btn_alt_gerente_okActionPerformed
 
+    private void btn_alt_gerente_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_pesquisarActionPerformed
+        atualizar_usuario_tabela();
+    }//GEN-LAST:event_btn_alt_gerente_pesquisarActionPerformed
+
     private void habilitarFormularioCardapio(boolean status){
         txtf_principal.setEnabled(status);
         txtf_secundario.setEnabled(status);
@@ -1923,11 +1930,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         txtf_preco.setEnabled(status);
     }
     
-        private void habilitarFormularioGerente(boolean status){
+    private void habilitarFormularioGerente(boolean status){
         txtf_nome.setEnabled(status);
         txtf_login.setEnabled(status);
         cbox_cargo.setEnabled(status);
         pswd_senha.setEnabled(status);
+        txtf_gerente_pesquisar.setEnabled(!status);
+    }
+    
+    private void atualizarBotaoGerente(Boolean status) {
+        btn_alt_gerente_add.setEnabled(status);
+        btn_alt_gerente_alt.setEnabled(status);
+        btn_alt_gerente_rm.setEnabled(status);
+        btn_alt_gerente_can.setEnabled(!status);
+        btn_alt_gerente_ok.setEnabled(!status);
+        btn_alt_gerente_pesquisar.setEnabled(status);
+        
     }
     
     private void habilitarFormularioCliente(boolean status){
@@ -1965,7 +1983,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     
     private void atualizar_usuario_tabela(){
         try {
-            usuarios = usuarioDao.buscarPeloNome("");
+            usuarios = usuarioDao.buscarPeloNome(txtf_gerente_pesquisar.getText());
             DefaultTableModel model = 
                     (DefaultTableModel) jtable_usuario.getModel();
             model.setNumRows(0);
@@ -2027,6 +2045,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable_alterar_menu;
     private javax.swing.JTable Jtable_alterar_menu_cliente;
@@ -2034,6 +2053,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_alt_gerente_alt;
     private javax.swing.JButton btn_alt_gerente_can;
     private javax.swing.JButton btn_alt_gerente_ok;
+    private javax.swing.JButton btn_alt_gerente_pesquisar;
     private javax.swing.JButton btn_alt_gerente_rm;
     private javax.swing.JButton btn_alt_menu_add;
     private javax.swing.JButton btn_alt_menu_add_cliente;
@@ -2048,7 +2068,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_alt_menu_rm_cliente;
     private javax.swing.JButton btn_logout;
     private javax.swing.JComboBox<String> cbox_cargo;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
@@ -2095,7 +2114,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTable jtable_usuario;
     private javax.swing.JTable jtable_ven_menu;
@@ -2111,6 +2129,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtf_cliente_rua;
     private javax.swing.JTextField txtf_cliente_sobrenome;
     private javax.swing.JTextField txtf_cliente_telefone;
+    private javax.swing.JTextField txtf_gerente_pesquisar;
     private javax.swing.JTextField txtf_login;
     private javax.swing.JTextField txtf_nome;
     private javax.swing.JTextField txtf_pesquisar;
