@@ -5,6 +5,7 @@ package visao;
 import dao.PratoDAO;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Prato;
 import modelo.Usuario;
@@ -1438,23 +1439,143 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         habilitarFormulario(true);
         btn_alt_menu_rm.setEnabled(false);
         btn_alt_menu_alt.setEnabled(false);
-        
     }//GEN-LAST:event_btn_alt_menu_addActionPerformed
 
     private void btn_alt_menu_rmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_rmActionPerformed
-        // TODO add your handling code here:
+        int linha = Jtable_alterar_menu.getSelectedRow();
+        
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um prato", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        pratoSelecionado = pratos.get(linha);
+        
+        try {
+            pratoDao.remover(pratoSelecionado.getId());
+            JOptionPane.showMessageDialog(null, "Prato excluido com sucesso");
+            atualizarTabela();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btn_alt_menu_rmActionPerformed
 
     private void btn_alt_menu_altActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_altActionPerformed
-        // TODO add your handling code here:
+        int linha = Jtable_alterar_menu.getSelectedRow();
+        
+        if (linha < 0){
+            JOptionPane.showMessageDialog(null, "Selecione um prato", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        habilitarFormulario(true);
+        
+        pratoSelecionado = pratos.get(linha);
+        
+        txtf_principal.setText(pratoSelecionado.getPrincipal());
+        txtf_secundario.setText(pratoSelecionado.getSecundario());
+        txtf_carne.setText(pratoSelecionado.getCarne());
+        txtf_salada.setText(pratoSelecionado.getSalada());
+        txtf_acompanhamento.setText(pratoSelecionado.getAcompanhamento());
+        txtf_preco.setText(String.valueOf(pratoSelecionado.getPreco()));
     }//GEN-LAST:event_btn_alt_menu_altActionPerformed
 
     private void btn_alt_menu_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_canActionPerformed
-        // TODO add your handling code here:
+        habilitarFormulario(false);
+        pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_canActionPerformed
 
     private void btn_alt_menu_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_okActionPerformed
-        // TODO add your handling code here:
+        habilitarFormulario(false);
+        
+        String principal = txtf_principal.getText();
+        String segundario = txtf_secundario.getText();
+        String carne = txtf_carne.getText();
+        String salada = txtf_salada.getText();
+        String acompanhamento = txtf_acompanhamento.getText();
+        float preco = 0.0f;
+        
+        try {
+            preco =  Float.parseFloat(txtf_preco.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Preço não informado.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (preco <= 0){
+            JOptionPane.showMessageDialog(null, "informe um preço válido.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (principal.length() <= 2) {
+            JOptionPane.showMessageDialog(null, "informe o prato principal válido.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (segundario.length() <= 2) {
+            JOptionPane.showMessageDialog(null, "informe o prato segundario válido.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (carne.length() <= 2) {
+            JOptionPane.showMessageDialog(null, "informe a carne válida.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (salada.length() <= 2) {
+            JOptionPane.showMessageDialog(null, "informe a salada válida.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (acompanhamento.length() <= 2) {
+            JOptionPane.showMessageDialog(null, "informe um acompanhamento válido.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (pratoSelecionado == null) {
+            Prato prato = new Prato(
+                principal,
+                segundario,
+                carne,
+                salada,
+                acompanhamento,
+                preco
+            );
+            
+            try {
+                pratoDao.adicionar(prato);
+                
+                JOptionPane.showMessageDialog(null, "Prato cadastrado");
+                
+                txtf_principal.setText("");
+                txtf_secundario.setText("");
+                txtf_carne.setText("");
+                txtf_salada.setText("");
+                txtf_acompanhamento.setText("");
+                txtf_preco.setText("");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "erro ao inserir no banco de dados", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            txtf_principal.setText(principal);
+            txtf_secundario.setText(segundario);
+            txtf_carne.setText(carne);
+            txtf_salada.setText(salada);
+            txtf_acompanhamento.setText(acompanhamento);
+            txtf_preco.setText(String.valueOf(preco));
+            
+            try {
+                pratoDao.alterar(pratoSelecionado);
+                JOptionPane.showMessageDialog(null, "Prato Alterado!");
+                atualizarTabela();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
+        pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_okActionPerformed
 
     private void btn_alt_menu_ok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok1ActionPerformed
@@ -1462,25 +1583,24 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_alt_menu_ok1ActionPerformed
 
     private void btn_alt_menu_alt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_alt1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_alt_menu_alt1ActionPerformed
 
     private void btn_alt_menu_can1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_can1ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btn_alt_menu_can1ActionPerformed
 
     private void btn_alt_menu_rm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_rm1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_alt_menu_rm1ActionPerformed
 
     private void btn_alt_menu_add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_add1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_alt_menu_add1ActionPerformed
 
     private void btn_alt_menu_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_alt_menu_ok2ActionPerformed
-
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         int index = jTabbedPane1.getSelectedIndex();
@@ -1493,7 +1613,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             case 5: setTitle("Gerente"); break;            
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
-
 
     private void habilitarFormulario(boolean status){
         txtf_principal.setEnabled(status);
