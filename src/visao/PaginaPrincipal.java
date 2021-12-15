@@ -1790,6 +1790,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             try {
                 clienteDao.alterar(clienteSelecionado);
                 JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
+                txtf_cliente_nome.setText("");
+                txtf_cliente_sobrenome.setText("");
+                txtf_cliente_telefone.setText("");
+                txtf_cliente_estado.setText("");
+                txtf_cliente_cidade.setText("");
+                txtf_cliente_bairro.setText("");
+                txtf_cliente_rua.setText("");
+                txtf_cliente_numero.setText("");
                 atualizar_botao_cliente(true);
                 habilitar_formulario_cliente(false);
             } catch (SQLException ex) {
@@ -1947,6 +1955,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             if (usuarioSelecionado.getId() == usuario.getId()) {
                 JOptionPane.showMessageDialog(null, "Não é possível excluir a conta logada.", "Atenção",
                     JOptionPane.WARNING_MESSAGE);
+                return;
             } else {
                 usuarioDao.remover(usuarioSelecionado.getId());
                 JOptionPane.showMessageDialog(null, "Pessoa excluida com sucesso");
