@@ -57,7 +57,8 @@ public void adicionar(Usuario usuario) throws SQLException {
         ResultSet rs = ps.executeQuery();
         List<Usuario> usuarios = new ArrayList<>();
         while(rs.next()) {
-            usuarios.add(new Usuario(rs.getString("nome"), rs.getString("login"), rs.getInt("permissao")));
+            usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nome"),
+                    rs.getString("login"), rs.getInt("permissao")));
         }
         ps.execute();
         rs.close();

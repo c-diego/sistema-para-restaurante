@@ -19,6 +19,13 @@ public class Usuario {
         this.login = login;
         this.permissao = permissao;
     }
+    
+    public Usuario(int id, String nome, String login, int permissao) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.permissao = permissao;
+    }
 
     public Usuario(int id, String nome, String login, String senha, int permissao) {
         this.id = id;
