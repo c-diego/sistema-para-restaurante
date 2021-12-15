@@ -1,7 +1,5 @@
 package visao;
 
-//@author diego
-
 import dao.ClienteDAO;
 import dao.PratoDAO;
 import dao.UsuarioDAO;
@@ -44,7 +42,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(3, true);
             jTabbedPane1.setEnabledAt(4, false);
             jTabbedPane1.setEnabledAt(5, false);
-            atualizar_vender_tabela();
+            atualizar_cardapio_vendedor();
             
         } else {
             jTabbedPane1.setEnabledAt(0, true);
@@ -53,11 +51,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(3, true);
             jTabbedPane1.setEnabledAt(4, true);
             jTabbedPane1.setEnabledAt(5, true);
-            atualizar_alt_tabela();
-            atualizar_vender_tabela();
             atualizar_usuario_tabela();
+            
             atualizarBotaoGerente(true);
             habilitarFormularioGerente(false);
+            
+            habilitar_formulario_cardapio(false);
+            atualizar_botao_cardapio(true);
+            atualizar_cardapio_gerente();
+            atualizar_cardapio_vendedor();
             
         }
     }
@@ -1000,13 +1002,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Alterar Cardápio");
 
-        btn_alt_menu_ok.setBackground(new java.awt.Color(0, 255, 144));
+        btn_alt_menu_ok.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_menu_ok.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_menu_ok.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_menu_ok.setText("Pronto");
         btn_alt_menu_ok.setBorder(null);
-        btn_alt_menu_ok.setBorderPainted(false);
-        btn_alt_menu_ok.setContentAreaFilled(false);
         btn_alt_menu_ok.setOpaque(true);
         btn_alt_menu_ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1014,13 +1014,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_menu_alt.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_menu_alt.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_menu_alt.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_menu_alt.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_menu_alt.setText("Alterar");
         btn_alt_menu_alt.setBorder(null);
-        btn_alt_menu_alt.setBorderPainted(false);
-        btn_alt_menu_alt.setContentAreaFilled(false);
         btn_alt_menu_alt.setOpaque(true);
         btn_alt_menu_alt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1028,13 +1026,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_menu_can.setBackground(new java.awt.Color(255, 100, 100));
+        btn_alt_menu_can.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_menu_can.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_menu_can.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_menu_can.setText("Cancelar");
         btn_alt_menu_can.setBorder(null);
-        btn_alt_menu_can.setBorderPainted(false);
-        btn_alt_menu_can.setContentAreaFilled(false);
         btn_alt_menu_can.setOpaque(true);
         btn_alt_menu_can.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1042,13 +1038,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btn_alt_menu_rm.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_menu_rm.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_menu_rm.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_menu_rm.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_menu_rm.setText("Remover");
         btn_alt_menu_rm.setBorder(null);
-        btn_alt_menu_rm.setBorderPainted(false);
-        btn_alt_menu_rm.setContentAreaFilled(false);
         btn_alt_menu_rm.setOpaque(true);
         btn_alt_menu_rm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1060,13 +1054,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         txtf_preco.setForeground(new java.awt.Color(70, 70, 70));
         txtf_preco.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Preço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        btn_alt_menu_add.setBackground(new java.awt.Color(40, 148, 198));
+        btn_alt_menu_add.setBackground(new java.awt.Color(255, 255, 255));
         btn_alt_menu_add.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         btn_alt_menu_add.setForeground(new java.awt.Color(70, 70, 70));
         btn_alt_menu_add.setText("Adicionar");
         btn_alt_menu_add.setBorder(null);
-        btn_alt_menu_add.setBorderPainted(false);
-        btn_alt_menu_add.setContentAreaFilled(false);
         btn_alt_menu_add.setOpaque(true);
         btn_alt_menu_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1472,9 +1464,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_logoutActionPerformed
 
-    //Botões da tela Cardapio
+//######################################### Tela Cardapio #######################################################
     private void btn_alt_menu_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_addActionPerformed
-        habilitarFormularioCardapio(true);
+        habilitar_formulario_cardapio(true);
+        atualizar_botao_cardapio(false);
         pratoSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_addActionPerformed
 
@@ -1491,8 +1484,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         try {
             pratoDao.remover(pratoSelecionado.getId());
             JOptionPane.showMessageDialog(null, "Prato excluido com sucesso");
-            atualizar_alt_tabela();
-            atualizar_vender_tabela();
+            atualizar_cardapio_gerente();
+            atualizar_cardapio_vendedor();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -1506,7 +1499,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             return;
         }
         
-        habilitarFormularioCardapio(true);
+        habilitar_formulario_cardapio(true);
+        atualizar_botao_cardapio(false);
         
         pratoSelecionado = pratos.get(linha);
         
@@ -1519,12 +1513,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_alt_menu_altActionPerformed
 
     private void btn_alt_menu_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_canActionPerformed
-        habilitarFormularioCardapio(false);
+        habilitar_formulario_cardapio(false);
+        atualizar_botao_cardapio(true);
         pratoSelecionado = null;
+        txtf_principal.setText("");
+        txtf_secundario.setText("");
+        txtf_carne.setText("");
+        txtf_salada.setText("");
+        txtf_acompanhamento.setText("");
+        txtf_preco.setText("");        
     }//GEN-LAST:event_btn_alt_menu_canActionPerformed
 
     private void btn_alt_menu_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_okActionPerformed
-        habilitarFormularioCardapio(false);
         
         String principal = txtf_principal.getText();
         String segundario = txtf_secundario.getText();
@@ -1536,7 +1536,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         try {
             preco =  Float.parseFloat(txtf_preco.getText());
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Preço não informado.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Informe um preço válido.", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -1584,8 +1584,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 pratoDao.adicionar(prato);
                 
                 JOptionPane.showMessageDialog(null, "Prato cadastrado");
-                atualizar_alt_tabela();
-                atualizar_vender_tabela();
                 
                 txtf_principal.setText("");
                 txtf_secundario.setText("");
@@ -1593,33 +1591,112 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 txtf_salada.setText("");
                 txtf_acompanhamento.setText("");
                 txtf_preco.setText("");
+                atualizar_botao_cardapio(true);
+                habilitar_formulario_cardapio(false);
+                
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "erro ao inserir no banco de dados", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            txtf_principal.setText(principal);
-            txtf_secundario.setText(segundario);
-            txtf_carne.setText(carne);
-            txtf_salada.setText(salada);
-            txtf_acompanhamento.setText(acompanhamento);
-            txtf_preco.setText(String.valueOf(preco));
+            pratoSelecionado.setPrincipal(principal);
+            pratoSelecionado.setSecundario(segundario);
+            pratoSelecionado.setCarne(carne);
+            pratoSelecionado.setSalada(salada);
+            pratoSelecionado.setAcompanhamento(acompanhamento);
+            pratoSelecionado.setPreco(preco);
             
             try {
                 pratoDao.alterar(pratoSelecionado);
                 JOptionPane.showMessageDialog(null, "Prato Alterado!");
-                atualizar_alt_tabela();
-                atualizar_vender_tabela();
+                
+                txtf_principal.setText("");
+                txtf_secundario.setText("");
+                txtf_carne.setText("");
+                txtf_salada.setText("");
+                txtf_acompanhamento.setText("");
+                txtf_preco.setText("");
 
+                atualizar_botao_cardapio(true);
+                habilitar_formulario_cardapio(false);
+                
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
         
         pratoSelecionado = null;
+        atualizar_cardapio_gerente();
+        atualizar_cardapio_vendedor();        
     }//GEN-LAST:event_btn_alt_menu_okActionPerformed
 
-    //Botões da Tela Clientes
+    private void habilitar_formulario_cardapio(boolean status){
+        txtf_principal.setEnabled(status);
+        txtf_secundario.setEnabled(status);
+        txtf_carne.setEnabled(status);
+        txtf_salada.setEnabled(status);
+        txtf_acompanhamento.setEnabled(status);
+        txtf_preco.setEnabled(status);
+    }
+    
+    private void atualizar_botao_cardapio(Boolean status) {
+        btn_alt_menu_add.setEnabled(status);
+        btn_alt_menu_alt.setEnabled(status);
+        btn_alt_menu_rm.setEnabled(status);
+        btn_alt_menu_can.setEnabled(!status);
+        btn_alt_menu_ok.setEnabled(!status);
+        
+    }
+    
+    private void atualizar_cardapio_gerente(){
+        try {
+            pratos = pratoDao.buscar("");
+            DefaultTableModel model = 
+                    (DefaultTableModel) Jtable_alterar_menu.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < pratos.size(); i++){
+                Prato prato = pratos.get(i);
+                model.addRow(new Object[]{
+                    prato.getPrincipal(),
+                    prato.getSecundario(),
+                    prato.getCarne(),
+                    prato.getSalada(),
+                    prato.getAcompanhamento(),
+                    prato.getPreco(),
+                });
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+   
+    private void atualizar_cardapio_vendedor(){
+        try {
+            pratos = pratoDao.buscar("");
+            DefaultTableModel model = 
+                    (DefaultTableModel) jtable_ven_menu.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < pratos.size(); i++){
+                Prato prato = pratos.get(i);
+                model.addRow(new Object[]{
+                    prato.getPrincipal(),
+                    prato.getSecundario(),
+                    prato.getCarne(),
+                    prato.getSalada(),
+                    prato.getAcompanhamento(),
+                    prato.getPreco(),
+                });
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+//######################################### FIM #######################################################
+     
+     
+     
+     
+//######################################### Tela Clientes #######################################################
     private void btn_alt_menu_ok_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok_clienteActionPerformed
         habilitarFormularioCliente(false);
         
@@ -1780,6 +1857,42 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         clienteSelecionado = null;
     }//GEN-LAST:event_btn_alt_menu_add_clienteActionPerformed
 
+    private void habilitarFormularioCliente(boolean status){
+        txtf_cliente_nome.setEnabled(status);
+        txtf_cliente_sobrenome.setEnabled(status);
+        txtf_cliente_telefone.setEnabled(status);
+        txtf_cliente_estado.setEnabled(status);
+        txtf_cliente_cidade.setEnabled(status);
+        txtf_cliente_bairro.setEnabled(status);
+        txtf_cliente_rua.setEnabled(status);
+        txtf_cliente_numero.setEnabled(status);
+    }
+
+    private void pesquisarCliente(){
+        try{
+            clientes = clienteDao.buscarPeloNome(txtf_pesquisar.getText());
+            DefaultTableModel model = 
+                    (DefaultTableModel) Jtable_alterar_menu_cliente.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < clientes.size(); i++){
+                Cliente cliente = clientes.get(i);
+                model.addRow(new Object[]{
+                    cliente.getNome(),
+                    cliente.getSobrenome(),
+                    cliente.getTelefone(),
+                    cliente.getEstado(),
+                    cliente.getCidade(),
+                    cliente.getBairro(),
+                    cliente.getRua(),
+                    cliente.getNumero(),
+                });
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+//######################################### FIM #######################################################    
+    
     // ?
     private void btn_alt_menu_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok2ActionPerformed
         pesquisarCliente();
@@ -1797,7 +1910,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    //Botões da tela Gerente
+//######################################### Tela Gerente #######################################################
     private void btn_alt_gerente_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_gerente_addActionPerformed
         atualizarBotaoGerente(false);
         habilitarFormularioGerente(true);
@@ -1886,7 +1999,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 txtf_login.setText("");
                 pswd_senha.setText("");
                 atualizarBotaoGerente(true);
-                habilitarFormularioGerente(!false);
+                habilitarFormularioGerente(false);
         
                 
             } catch (SQLException ex) {
@@ -1905,7 +2018,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 usuarioDao.alterar(usuarioSelecionado);
                 JOptionPane.showMessageDialog(null, "Usuário Alterado");
                 atualizarBotaoGerente(true);
-                habilitarFormularioGerente(!false);
+                habilitarFormularioGerente(false);
         
 
             } catch (SQLException ex) {
@@ -1921,15 +2034,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         atualizar_usuario_tabela();
     }//GEN-LAST:event_btn_alt_gerente_pesquisarActionPerformed
 
-    private void habilitarFormularioCardapio(boolean status){
-        txtf_principal.setEnabled(status);
-        txtf_secundario.setEnabled(status);
-        txtf_carne.setEnabled(status);
-        txtf_salada.setEnabled(status);
-        txtf_acompanhamento.setEnabled(status);
-        txtf_preco.setEnabled(status);
-    }
-    
     private void habilitarFormularioGerente(boolean status){
         txtf_nome.setEnabled(status);
         txtf_login.setEnabled(status);
@@ -1947,40 +2051,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         btn_alt_gerente_pesquisar.setEnabled(status);
         
     }
-    
-    private void habilitarFormularioCliente(boolean status){
-        txtf_cliente_nome.setEnabled(status);
-        txtf_cliente_sobrenome.setEnabled(status);
-        txtf_cliente_telefone.setEnabled(status);
-        txtf_cliente_estado.setEnabled(status);
-        txtf_cliente_cidade.setEnabled(status);
-        txtf_cliente_bairro.setEnabled(status);
-        txtf_cliente_rua.setEnabled(status);
-        txtf_cliente_numero.setEnabled(status);
-    }
-    
-    private void atualizar_alt_tabela(){
-        try {
-            pratos = pratoDao.buscar("");
-            DefaultTableModel model = 
-                    (DefaultTableModel) Jtable_alterar_menu.getModel();
-            model.setNumRows(0);
-            for(int i = 0;i < pratos.size(); i++){
-                Prato prato = pratos.get(i);
-                model.addRow(new Object[]{
-                    prato.getPrincipal(),
-                    prato.getSecundario(),
-                    prato.getCarne(),
-                    prato.getSalada(),
-                    prato.getAcompanhamento(),
-                    prato.getPreco(),
-                });
-            }
-        } catch(SQLException ex){
-            ex.printStackTrace();
-        }
-    }
-    
+   
     private void atualizar_usuario_tabela(){
         try {
             usuarios = usuarioDao.buscarPeloNome(txtf_gerente_pesquisar.getText());
@@ -1998,53 +2069,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    
-    private void atualizar_vender_tabela(){
-        try {
-            pratos = pratoDao.buscar("");
-            DefaultTableModel model = 
-                    (DefaultTableModel) jtable_ven_menu.getModel();
-            model.setNumRows(0);
-            for(int i = 0;i < pratos.size(); i++){
-                Prato prato = pratos.get(i);
-                model.addRow(new Object[]{
-                    prato.getPrincipal(),
-                    prato.getSecundario(),
-                    prato.getCarne(),
-                    prato.getSalada(),
-                    prato.getAcompanhamento(),
-                    prato.getPreco(),
-                });
-            }
-        } catch(SQLException ex){
-            ex.printStackTrace();
-        }
-    }
-    
-    private void pesquisarCliente(){
-        try{
-            clientes = clienteDao.buscarPeloNome(txtf_pesquisar.getText());
-            DefaultTableModel model = 
-                    (DefaultTableModel) Jtable_alterar_menu_cliente.getModel();
-            model.setNumRows(0);
-            for(int i = 0;i < clientes.size(); i++){
-                Cliente cliente = clientes.get(i);
-                model.addRow(new Object[]{
-                    cliente.getNome(),
-                    cliente.getSobrenome(),
-                    cliente.getTelefone(),
-                    cliente.getEstado(),
-                    cliente.getCidade(),
-                    cliente.getBairro(),
-                    cliente.getRua(),
-                    cliente.getNumero(),
-                });
-            }
-        }catch(SQLException ex){
-            ex.printStackTrace();
-        }
-    }
-
+//######################################### FIM #######################################################     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable_alterar_menu;

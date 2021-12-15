@@ -40,7 +40,7 @@ public class PratoDAO {
         ResultSet rs = ps.executeQuery();
         List<Prato> pratos = new ArrayList<>();
         while(rs.next()) {
-            pratos.add(new Prato(rs.getString("principal"), rs.getString("secundario"),
+            pratos.add(new Prato(rs.getInt("id"),rs.getString("principal"), rs.getString("secundario"),
                     rs.getString("carne"), rs.getString("salada"), rs.getString("acompanhamento"),
                     rs.getFloat("preco")));
         }
