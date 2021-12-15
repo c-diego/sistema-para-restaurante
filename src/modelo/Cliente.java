@@ -24,6 +24,17 @@ public class Cliente {
         this.numero = numero;
         this.qtnPedidos = qtnPedidos;
     }
+    
+    public Cliente(String nome, String sobrenome, String telefone, String estado, String cidade, String bairro, String rua, int numero) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.telefone = telefone;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+    }
 
     public Cliente(String nome, String sobrenome, String telefone, String estado, String cidade, String bairro, String rua, int numero, int qtnPedidos) {
         this.nome = nome;

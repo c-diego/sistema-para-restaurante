@@ -1010,42 +1010,42 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane13" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="txtf_principal1" min="-2" pref="358" max="-2" attributes="0"/>
+                                      <Component id="txtf_cliente_nome" min="-2" pref="358" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtf_salada1" max="32767" attributes="0"/>
+                                      <Component id="txtf_cliente_sobrenome" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="txtf_principal2" min="-2" pref="358" max="-2" attributes="0"/>
+                                      <Component id="txtf_cliente_telefone" min="-2" pref="358" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtf_salada2" max="32767" attributes="0"/>
+                                      <Component id="txtf_cliente_estado" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="txtf_principal3" min="-2" pref="358" max="-2" attributes="0"/>
+                                      <Component id="txtf_cliente_cidade" min="-2" pref="358" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtf_salada3" max="32767" attributes="0"/>
+                                      <Component id="txtf_cliente_bairro" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="txtf_principal4" min="-2" pref="358" max="-2" attributes="0"/>
+                                      <Component id="txtf_cliente_rua" min="-2" pref="358" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtf_salada4" max="32767" attributes="0"/>
+                                      <Component id="txtf_cliente_numero" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="183" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btn_alt_menu_add1" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_alt_menu_add_cliente" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_rm1" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_alt_menu_rm_cliente" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_alt1" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_alt_menu_alt_cliente" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_can1" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_alt_menu_can_cliente" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_alt_menu_ok1" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_alt_menu_ok_cliente" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                                              <Component id="txtf_salada5" max="32767" attributes="0"/>
+                                              <Component id="txtf_pesquisar" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btn_alt_menu_ok2" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
@@ -1061,38 +1061,38 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtf_principal1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtf_salada1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_sobrenome" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtf_principal2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtf_salada2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_telefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_estado" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtf_principal3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtf_salada3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_cidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_bairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtf_principal4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtf_salada4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_rua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtf_cliente_numero" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btn_alt_menu_ok2" pref="37" max="32767" attributes="0"/>
-                                  <Component id="txtf_salada5" max="32767" attributes="0"/>
+                                  <Component id="txtf_pesquisar" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jScrollPane13" min="-2" pref="236" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_alt_menu_ok1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_alt1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_can1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_rm1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btn_alt_menu_add1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_alt_menu_ok_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_alt_menu_alt_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_alt_menu_can_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_alt_menu_rm_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_alt_menu_add_cliente" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1100,7 +1100,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_ok1">
+                    <Component class="javax.swing.JButton" name="btn_alt_menu_ok_cliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="90" green="ff" red="0" type="rgb"/>
@@ -1120,10 +1120,10 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_ok1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_ok_clienteActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_alt1">
+                    <Component class="javax.swing.JButton" name="btn_alt_menu_alt_cliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -1143,10 +1143,10 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_alt1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_alt_clienteActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_can1">
+                    <Component class="javax.swing.JButton" name="btn_alt_menu_can_cliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="64" red="ff" type="rgb"/>
@@ -1166,10 +1166,10 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_can1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_can_clienteActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_rm1">
+                    <Component class="javax.swing.JButton" name="btn_alt_menu_rm_cliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -1189,10 +1189,10 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_rm1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_rm_clienteActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btn_alt_menu_add1">
+                    <Component class="javax.swing.JButton" name="btn_alt_menu_add_cliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -1212,10 +1212,10 @@
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_add1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_add_clienteActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_principal1">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_nome">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1245,7 +1245,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="Jtable_alterar_menu1">
+                        <Component class="javax.swing.JTable" name="Jtable_alterar_menu_cliente">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="c8" green="c8" red="c8" type="rgb"/>
@@ -1316,7 +1316,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="txtf_salada1">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_sobrenome">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1339,7 +1339,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_principal2">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_telefone">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1362,7 +1362,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_salada2">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_estado">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1385,7 +1385,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_principal3">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_cidade">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1408,7 +1408,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_salada3">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_bairro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1431,7 +1431,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_principal4">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_rua">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1454,7 +1454,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_salada4">
+                    <Component class="javax.swing.JTextField" name="txtf_cliente_numero">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -1500,7 +1500,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alt_menu_ok2ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtf_salada5">
+                    <Component class="javax.swing.JTextField" name="txtf_pesquisar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
