@@ -9,6 +9,42 @@ public class Usuario {
     private String senha;
     private int permissao;
 
+    public Usuario(String nome, String login) {
+        this.nome = nome;
+        this.login = login;
+    }
+    
+    public Usuario(String nome, String login, int permissao) {
+        this.nome = nome;
+        this.login = login;
+        this.permissao = permissao;
+    }
+    
+    public Usuario(int id, String nome, String login, int permissao) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.permissao = permissao;
+    }
+
+    public Usuario(int id, String nome, String login, String senha, int permissao) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.permissao = permissao;
+    }
+
+    public Usuario(String nome, String login, String senha, int permissao) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.permissao = permissao;
+    }
+
+    public Usuario() {
+    }
+
     //setters
     public void setId(int id) { this.id = id; }
 
