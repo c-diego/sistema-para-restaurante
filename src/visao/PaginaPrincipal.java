@@ -2,13 +2,21 @@ package visao;
 
 //@author diego
 
+import dao.PratoDAO;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Prato;
 import modelo.Usuario;
         
 
 public class PaginaPrincipal extends javax.swing.JFrame {
 
     private Usuario usuario;
-
+    private PratoDAO pratoDao = new PratoDAO();
+    private List<Prato> pratos;
+    private Prato pratoSelecionado;
+    
     public PaginaPrincipal(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
@@ -180,7 +188,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(518, Short.MAX_VALUE)
+                .addContainerGap(525, Short.MAX_VALUE)
                 .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -213,7 +221,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(70, 70, 70));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Cardápio Do Dia");
-        jLabel21.setBorder(null);
 
         jtable_ven_menu.setForeground(new java.awt.Color(200, 200, 200));
         jtable_ven_menu.setModel(new javax.swing.table.DefaultTableModel(
@@ -329,14 +336,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(70, 70, 70));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Pedido");
-        jLabel24.setBorder(null);
 
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
         jLabel25.setFont(new java.awt.Font("Ubuntu", 0, 19)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(70, 70, 70));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Selecionar Cliente");
-        jLabel25.setBorder(null);
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         jLabel2.setText("Total");
@@ -372,7 +377,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jTable8.getColumnModel().getColumn(0).setMaxWidth(150);
         }
 
-        jTextField27.setBackground(new java.awt.Color(255, 255, 255));
         jTextField27.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField27.setForeground(new java.awt.Color(70, 70, 70));
         jTextField27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
@@ -402,11 +406,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -431,7 +430,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lab_selected_customer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -442,7 +441,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane5))))
                 .addContainerGap())
         );
 
@@ -453,7 +457,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -605,9 +609,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(70, 70, 70));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Detalhes");
-        jLabel26.setBorder(null);
 
-        jTextField25.setBackground(new java.awt.Color(255, 255, 255));
         jTextField25.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField25.setForeground(new java.awt.Color(70, 70, 70));
         jTextField25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
@@ -784,7 +786,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        txtf_principal1.setBackground(new java.awt.Color(255, 255, 255));
         txtf_principal1.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_principal1.setForeground(new java.awt.Color(70, 70, 70));
         txtf_principal1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -827,37 +828,30 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Jtable_alterar_menu1.getTableHeader().setReorderingAllowed(false);
         jScrollPane13.setViewportView(Jtable_alterar_menu1);
 
-        txtf_salada1.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada1.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada1.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Sobrenome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_principal2.setBackground(new java.awt.Color(255, 255, 255));
         txtf_principal2.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_principal2.setForeground(new java.awt.Color(70, 70, 70));
         txtf_principal2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Telefone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_salada2.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada2.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada2.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Estado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_principal3.setBackground(new java.awt.Color(255, 255, 255));
         txtf_principal3.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_principal3.setForeground(new java.awt.Color(70, 70, 70));
         txtf_principal3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Cidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_salada3.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada3.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada3.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Bairro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_principal4.setBackground(new java.awt.Color(255, 255, 255));
         txtf_principal4.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_principal4.setForeground(new java.awt.Color(70, 70, 70));
         txtf_principal4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Rua", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_salada4.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada4.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada4.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Número", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -876,7 +870,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        txtf_salada5.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada5.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada5.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
@@ -944,7 +937,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtf_principal4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtf_salada4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_alt_menu_ok2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                     .addComponent(txtf_salada5))
@@ -988,7 +981,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(70, 70, 70));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Alterar Cardápio");
-        jLabel22.setBorder(null);
 
         btn_alt_menu_ok.setBackground(new java.awt.Color(0, 255, 144));
         btn_alt_menu_ok.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
@@ -1046,7 +1038,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        txtf_preco.setBackground(new java.awt.Color(255, 255, 255));
         txtf_preco.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_preco.setForeground(new java.awt.Color(70, 70, 70));
         txtf_preco.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Preço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -1065,7 +1056,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        txtf_principal.setBackground(new java.awt.Color(255, 255, 255));
         txtf_principal.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_principal.setForeground(new java.awt.Color(70, 70, 70));
         txtf_principal.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Principal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -1108,22 +1098,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Jtable_alterar_menu.getTableHeader().setReorderingAllowed(false);
         jScrollPane9.setViewportView(Jtable_alterar_menu);
 
-        txtf_secundario.setBackground(new java.awt.Color(255, 255, 255));
         txtf_secundario.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_secundario.setForeground(new java.awt.Color(70, 70, 70));
         txtf_secundario.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Secundário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_carne.setBackground(new java.awt.Color(255, 255, 255));
         txtf_carne.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_carne.setForeground(new java.awt.Color(70, 70, 70));
         txtf_carne.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Carne", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_acompanhamento.setBackground(new java.awt.Color(255, 255, 255));
         txtf_acompanhamento.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_acompanhamento.setForeground(new java.awt.Color(70, 70, 70));
         txtf_acompanhamento.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Acompanhamento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        txtf_salada.setBackground(new java.awt.Color(255, 255, 255));
         txtf_salada.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         txtf_salada.setForeground(new java.awt.Color(70, 70, 70));
         txtf_salada.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Salada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -1184,7 +1170,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtf_carne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtf_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_alt_menu_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1263,7 +1249,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton16.setContentAreaFilled(false);
         jButton16.setOpaque(true);
 
-        jTextField26.setBackground(new java.awt.Color(255, 255, 255));
         jTextField26.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField26.setForeground(new java.awt.Color(70, 70, 70));
         jTextField26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
@@ -1311,22 +1296,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTable4);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
         jTextField6.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(70, 70, 70));
         jTextField6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(70, 70, 70));
         jTextField7.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(70, 70, 70));
         jTextField8.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Telefone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
-        pswd_senha.setBackground(new java.awt.Color(255, 255, 255));
         pswd_senha.setForeground(new java.awt.Color(70, 70, 70));
         pswd_senha.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
 
@@ -1387,7 +1368,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1454,7 +1435,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_alt_menu_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_addActionPerformed
-        // TODO add your handling code here:
+        habilitarFormulario(true);
+        btn_alt_menu_rm.setEnabled(false);
+        btn_alt_menu_alt.setEnabled(false);
+        
     }//GEN-LAST:event_btn_alt_menu_addActionPerformed
 
     private void btn_alt_menu_rmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_rmActionPerformed
@@ -1497,6 +1481,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_alt_menu_ok2ActionPerformed
 
+
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
         int index = jTabbedPane1.getSelectedIndex();
         switch(index) {
@@ -1509,6 +1494,37 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
+
+    private void habilitarFormulario(boolean status){
+        txtf_principal.setEnabled(status);
+        txtf_secundario.setEnabled(status);
+        txtf_carne.setEnabled(status);
+        txtf_salada.setEnabled(status);
+        txtf_acompanhamento.setEnabled(status);
+        txtf_preco.setEnabled(status);
+    }
+    
+    private void atualizarTabela(){
+        try{
+            pratos = pratoDao.buscar(" ");
+            DefaultTableModel model = 
+                    (DefaultTableModel) Jtable_alterar_menu.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < pratos.size(); i++){
+                Prato prato = pratos.get(i);
+                model.addRow(new Object[]{
+                    prato.getPrincipal(),
+                    prato.getSecundario(),
+                    prato.getCarne(),
+                    prato.getSalada(),
+                    prato.getAcompanhamento(),
+                    prato.getPreco(),
+                });
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable_alterar_menu;
