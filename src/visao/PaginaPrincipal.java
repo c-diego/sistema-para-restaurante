@@ -146,6 +146,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1, 1));
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1491,6 +1496,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void btn_alt_menu_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alt_menu_ok2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_alt_menu_ok2ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        int index = jTabbedPane1.getSelectedIndex();
+        switch(index) {
+            case 0: setTitle("Início"); break;
+            case 1: setTitle("Vender"); break;
+            case 2: setTitle("Pedidos"); break;
+            case 3: setTitle("Clientes"); break;
+            case 4: setTitle("Cardápio"); break;
+            case 5: setTitle("Gerente"); break;            
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
