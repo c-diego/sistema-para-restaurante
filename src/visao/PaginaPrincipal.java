@@ -114,7 +114,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_pedidos = new javax.swing.JTable();
         btn_pedidos_pesquisar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        label_pedidos_nome_cliente = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -602,7 +602,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("nome");
+        label_pedidos_nome_cliente.setText("nome");
 
         jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         jLabel6.setText("Cliente");
@@ -641,7 +641,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(label_pedidos_nome_cliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -673,7 +673,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(label_pedidos_nome_cliente)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4))
@@ -2077,6 +2077,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         try {
             Cliente cliente = clienteDao.buscarPeloTelefone(txtf_pedidos_pesquisar.getText());
             atualizar_pedidos_tabela(cliente, cliente.getQtnPedidos());
+            label_pedidos_nome_cliente.setText(cliente.getNome());
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (NullPointerException ex) {
@@ -2149,7 +2150,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2180,6 +2180,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jtable_usuario;
     private javax.swing.JTable jtable_ven_menu;
     private javax.swing.JLabel lab_selected_customer;
+    private javax.swing.JLabel label_pedidos_nome_cliente;
     private javax.swing.JPasswordField pswd_senha;
     private javax.swing.JTextField txtf_acompanhamento;
     private javax.swing.JTextField txtf_carne;

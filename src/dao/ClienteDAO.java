@@ -52,7 +52,7 @@ public class ClienteDAO {
         Connection conexao = new Conexao().getConexao();
         String sql = "SELECT * FROM cliente WHERE telefone = ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setString(1,"%"+ telefone + "%");
+        ps.setString(1, telefone);
         ResultSet rs = ps.executeQuery();
         Cliente cliente = null;
         while(rs.next()) {

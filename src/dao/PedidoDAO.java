@@ -28,7 +28,7 @@ public class PedidoDAO {
     
     public List<Pedido>listar() throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql = "SELECT * FROM pedido WHERE prato LIKE ?";
+        String sql = "SELECT * FROM pedido WHERE fk_prato LIKE ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setString(1,"%");
         ResultSet rs = ps.executeQuery();
