@@ -33,6 +33,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private List<Pedido> pedidos;
     private Pedido pedidoSelecionado;
     
+    private int paginaAtual;
+    
     public PaginaPrincipal(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
@@ -112,15 +114,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jtable_pedidos = new javax.swing.JTable();
+        jtable_pedidos_cliente = new javax.swing.JTable();
         btn_pedidos_pesquisar = new javax.swing.JButton();
         label_pedidos_nome_cliente = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        label_pedidos_total = new javax.swing.JLabel();
+        btn_pedidos_anterior = new javax.swing.JButton();
+        btn_pedidos_proximo = new javax.swing.JButton();
         txtf_pedidos_pesquisar = new javax.swing.JTextField();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jtable_pedidos_pedido = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         btn_cliente_ok = new javax.swing.JButton();
@@ -542,8 +546,105 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtable_pedidos.setForeground(new java.awt.Color(70, 70, 70));
-        jtable_pedidos.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_pedidos_cliente.setForeground(new java.awt.Color(70, 70, 70));
+        jtable_pedidos_cliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Sobrenome", "Telefone"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtable_pedidos_cliente.getTableHeader().setReorderingAllowed(false);
+        jtable_pedidos_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_pedidos_clienteMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jtable_pedidos_cliente);
+
+        btn_pedidos_pesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_pedidos_pesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_pedidos_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        btn_pedidos_pesquisar.setText("Pesquisar");
+        btn_pedidos_pesquisar.setBorder(null);
+        btn_pedidos_pesquisar.setOpaque(true);
+        btn_pedidos_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pedidos_pesquisarActionPerformed(evt);
+            }
+        });
+
+        label_pedidos_nome_cliente.setText("nome");
+
+        jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        jLabel6.setText("Cliente");
+
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
+        jLabel5.setText("Total");
+
+        label_pedidos_total.setText("0.0");
+
+        btn_pedidos_anterior.setBackground(new java.awt.Color(255, 255, 255));
+        btn_pedidos_anterior.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_pedidos_anterior.setForeground(new java.awt.Color(70, 70, 70));
+        btn_pedidos_anterior.setText("Anterior");
+        btn_pedidos_anterior.setBorder(null);
+        btn_pedidos_anterior.setOpaque(true);
+        btn_pedidos_anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pedidos_anteriorActionPerformed(evt);
+            }
+        });
+
+        btn_pedidos_proximo.setBackground(new java.awt.Color(255, 255, 255));
+        btn_pedidos_proximo.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_pedidos_proximo.setForeground(new java.awt.Color(70, 70, 70));
+        btn_pedidos_proximo.setText("Próximo");
+        btn_pedidos_proximo.setBorder(null);
+        btn_pedidos_proximo.setOpaque(true);
+        btn_pedidos_proximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pedidos_proximoActionPerformed(evt);
+            }
+        });
+
+        txtf_pedidos_pesquisar.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        txtf_pedidos_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        txtf_pedidos_pesquisar.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
+
+        jtable_pedidos_pedido.setForeground(new java.awt.Color(70, 70, 70));
+        jtable_pedidos_pedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -581,54 +682,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtable_pedidos.getTableHeader().setReorderingAllowed(false);
-        jScrollPane7.setViewportView(jtable_pedidos);
-        if (jtable_pedidos.getColumnModel().getColumnCount() > 0) {
-            jtable_pedidos.getColumnModel().getColumn(0).setMinWidth(100);
-            jtable_pedidos.getColumnModel().getColumn(0).setMaxWidth(100);
-            jtable_pedidos.getColumnModel().getColumn(2).setMinWidth(150);
-            jtable_pedidos.getColumnModel().getColumn(2).setMaxWidth(150);
-        }
-
-        btn_pedidos_pesquisar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_pedidos_pesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        btn_pedidos_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
-        btn_pedidos_pesquisar.setText("Pesquisar");
-        btn_pedidos_pesquisar.setBorder(null);
-        btn_pedidos_pesquisar.setOpaque(true);
-        btn_pedidos_pesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pedidos_pesquisarActionPerformed(evt);
-            }
-        });
-
-        label_pedidos_nome_cliente.setText("nome");
-
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        jLabel6.setText("Cliente");
-
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        jLabel5.setText("Total");
-
-        jLabel4.setText("0.0");
-
-        jButton9.setBackground(new java.awt.Color(255, 255, 255));
-        jButton9.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(70, 70, 70));
-        jButton9.setText("Anterior");
-        jButton9.setBorder(null);
-        jButton9.setOpaque(true);
-
-        jButton10.setBackground(new java.awt.Color(255, 255, 255));
-        jButton10.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(70, 70, 70));
-        jButton10.setText("Próximo");
-        jButton10.setBorder(null);
-        jButton10.setOpaque(true);
-
-        txtf_pedidos_pesquisar.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        txtf_pedidos_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
-        txtf_pedidos_pesquisar.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(200, 200, 200), 1, true), "Telefone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 1, 12), new java.awt.Color(70, 70, 70))); // NOI18N
+        jtable_pedidos_pedido.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(jtable_pedidos_pedido);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -645,18 +700,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(label_pedidos_total)
                         .addGap(222, 222, 222))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_pedidos_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_pedidos_proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(txtf_pedidos_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_pedidos_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,18 +726,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtf_pedidos_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pedidos_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(232, 232, 232)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_pedidos_anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pedidos_proximo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_pedidos_nome_cliente)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(label_pedidos_total))
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                    .addContainerGap(281, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(108, 108, 108)))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -2074,42 +2139,79 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     
     
     private void btn_pedidos_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidos_pesquisarActionPerformed
+        
         try {
-            Cliente cliente = clienteDao.buscarPeloTelefone(txtf_pedidos_pesquisar.getText());
-            atualizar_pedidos_tabela(cliente, cliente.getQtnPedidos());
-            label_pedidos_nome_cliente.setText(cliente.getNome());
+            clientes = clienteDao.buscarPeloNome(txtf_pedidos_pesquisar.getText());
+            DefaultTableModel model = (DefaultTableModel) jtable_pedidos_cliente.getModel();
+            model.setNumRows(0);
+            for (int i = 0; i < clientes.size(); i++) {
+                Cliente cliente = clientes.get(i);
+
+                    model.addRow(new Object[]{
+                        cliente.getNome(),
+                        cliente.getSobrenome(),
+                        cliente.getTelefone()
+                    });
+                    
+            }
         } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (NullPointerException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btn_pedidos_pesquisarActionPerformed
 
-    private void atualizar_pedidos_tabela(Cliente cliente, int numero){
+    private void jtable_pedidos_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_pedidos_clienteMouseClicked
+        int linha = jtable_pedidos_cliente.getSelectedRow();
+            if (linha < 0) {
+                return;
+            }
+        clienteSelecionado = clientes.get(linha);
+        label_pedidos_nome_cliente.setText(clienteSelecionado.getNome() + " " + clienteSelecionado.getSobrenome());
+        paginaAtual = clienteSelecionado.getQtnPedidos();
+        atualizar_pedidos_pedido();
+
+    }//GEN-LAST:event_jtable_pedidos_clienteMouseClicked
+
+    private void btn_pedidos_anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidos_anteriorActionPerformed
+        paginaAtual--;
+        atualizar_pedidos_pedido();
+    }//GEN-LAST:event_btn_pedidos_anteriorActionPerformed
+
+    private void btn_pedidos_proximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidos_proximoActionPerformed
+        paginaAtual++;
+        atualizar_pedidos_pedido();
+    }//GEN-LAST:event_btn_pedidos_proximoActionPerformed
+
+    private void atualizar_pedidos_pedido() {
         try {
             pedidos = pedidoDao.listar();
+            float total = 0f;
+
             DefaultTableModel model
-                    = (DefaultTableModel) jtable_pedidos.getModel();
+                    = (DefaultTableModel) jtable_pedidos_pedido.getModel();
             model.setNumRows(0);
             for (int i = 0; i < pedidos.size(); i++) {
                 Pedido pedido = pedidos.get(i);
-                if (pedido.getFk_cliente() == cliente.getId()
-                        && pedido.getNumero() == numero) {
+                if (pedido.getFk_cliente() == clienteSelecionado.getId()
+                        && pedido.getNumero() == paginaAtual) {
 
                     model.addRow(new Object[]{
                         pedido.getQuantidade(),
                         pedido.getFk_prato(),
                         pedido.getPreco()
                     });
+                    
+                    total += pedido.getPreco();
 
                 }
+                label_pedidos_total.setText(String.valueOf(total));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
-        }
+        }       
     }
+
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jtable_alterar_menu;
@@ -2132,22 +2234,21 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_cliente_pesquisar;
     private javax.swing.JButton btn_cliente_rm;
     private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_pedidos_anterior;
     private javax.swing.JButton btn_pedidos_pesquisar;
+    private javax.swing.JButton btn_pedidos_proximo;
     private javax.swing.JComboBox<String> cbox_cargo;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -2165,6 +2266,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanel_cardapio;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -2176,11 +2278,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField27;
-    private javax.swing.JTable jtable_pedidos;
+    private javax.swing.JTable jtable_pedidos_cliente;
+    private javax.swing.JTable jtable_pedidos_pedido;
     private javax.swing.JTable jtable_usuario;
     private javax.swing.JTable jtable_ven_menu;
     private javax.swing.JLabel lab_selected_customer;
     private javax.swing.JLabel label_pedidos_nome_cliente;
+    private javax.swing.JLabel label_pedidos_total;
     private javax.swing.JPasswordField pswd_senha;
     private javax.swing.JTextField txtf_acompanhamento;
     private javax.swing.JTextField txtf_carne;

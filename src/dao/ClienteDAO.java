@@ -47,35 +47,7 @@ public class ClienteDAO {
         conexao.close();
         return clientes;
     }
-    
-    public Cliente buscarPeloTelefone(String telefone) throws SQLException {
-        Connection conexao = new Conexao().getConexao();
-        String sql = "SELECT * FROM cliente WHERE telefone = ?";
-        PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setString(1, telefone);
-        ResultSet rs = ps.executeQuery();
-        Cliente cliente = null;
-        while(rs.next()) {
-            cliente = new Cliente(
-                    rs.getInt("id"),
-                    rs.getString("nome"),
-                    rs.getString("sobrenome"),
-                    rs.getString("telefone"),
-                    rs.getString("estado"),
-                    rs.getString("cidade"),
-                    rs.getString("bairro"),
-                    rs.getString("rua"),
-                    rs.getInt("numero"),
-                    rs.getInt("qtnPedidos")
-            );
-        }
-        ps.execute();
-        rs.close();
-        ps.close(); 
-        conexao.close();
-        return cliente;
-    }
-    
+        
     public void remover(int id) throws SQLException {
         Connection conexao = new Conexao().getConexao();
         String sql = "DELETE FROM cliente WHERE id=?";
