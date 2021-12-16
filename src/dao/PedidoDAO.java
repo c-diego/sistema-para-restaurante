@@ -26,12 +26,11 @@ public class PedidoDAO {
         conexao.close();
     }
     
-    public List<Pedido>buscar(int numero, int cliente_id) throws SQLException {
+    public List<Pedido>listar() throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql = "SELECT * FROM pedido WHERE fk_cliente = ? AND numero = ?";
+        String sql = "SELECT * FROM pedido WHERE prato LIKE ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1,cliente_id);
-        ps.setInt(2,numero);
+        ps.setString(1,"%");
         ResultSet rs = ps.executeQuery();
         List<Pedido> pedidos = new ArrayList<>();
         while(rs.next()) {
