@@ -77,4 +77,30 @@ public class PratoDAO {
         ps.close();
         conexao.close();
     }
+
+    public Prato buscarPorId(int id) throws SQLException {
+        Connection conexao = new Conexao().getConexao();
+        String sql = "SELECT * FROM prato WHERE id = ?";
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        Prato prato = null;
+        if (rs.next()) {
+            prato = new Prato(
+                    rs.getInt("id"),
+                    rs.getString("principal"),
+                    rs.getString("secundario"),
+                    rs.getString("carne"),
+                    rs.getString("salada"),
+                    rs.getString("acompanhamento"),
+                    rs.getFloat("preco")
+            );
+        }
+        ps.execute();
+        rs.close();
+        ps.close();
+        conexao.close();
+        return prato;
+    }
+    
 }

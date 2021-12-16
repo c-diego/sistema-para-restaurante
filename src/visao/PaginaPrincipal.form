@@ -213,15 +213,15 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jTextField27" max="32767" attributes="0"/>
+                                                              <Component id="txtf_vender_pesquisar" max="32767" attributes="0"/>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="jButton5" linkSize="19" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="btn_vender_pesquisar" linkSize="19" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Component id="jScrollPane8" alignment="1" pref="0" max="32767" attributes="0"/>
                                                           <Group type="102" attributes="0">
                                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="label_vender_total" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                           </Group>
                                                       </Group>
@@ -241,13 +241,13 @@
                                           <Component id="jLabel24" alignment="1" max="32767" attributes="0"/>
                                           <Component id="jScrollPane6" alignment="1" pref="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jButton24" linkSize="19" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_vender_add" linkSize="19" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jButton23" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_vender_rm" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                              <Component id="jButton21" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_vender_can" min="-2" pref="103" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jButton22" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <Component id="btn_vender_ok" min="-2" pref="103" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -279,8 +279,8 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jButton5" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField27" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_vender_pesquisar" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtf_vender_pesquisar" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jScrollPane8" pref="0" max="32767" attributes="0"/>
@@ -294,12 +294,12 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton22" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jButton21" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jButton23" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jButton24" linkSize="17" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_vender_ok" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_vender_can" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_vender_rm" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btn_vender_add" linkSize="17" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_vender_total" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -388,7 +388,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jButton21">
+                    <Component class="javax.swing.JButton" name="btn_vender_can">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="64" green="64" red="ff" type="rgb"/>
@@ -407,8 +407,11 @@
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender_canActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton22">
+                    <Component class="javax.swing.JButton" name="btn_vender_ok">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="90" green="ff" red="0" type="rgb"/>
@@ -427,6 +430,9 @@
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender_okActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane6">
                       <AuxValues>
@@ -435,7 +441,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable6">
+                        <Component class="javax.swing.JTable" name="jtable_vender_pedido">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="46" green="46" red="46" type="rgb"/>
@@ -473,7 +479,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jButton23">
+                    <Component class="javax.swing.JButton" name="btn_vender_rm">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -492,8 +498,11 @@
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender_rmActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton24">
+                    <Component class="javax.swing.JButton" name="btn_vender_add">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -512,6 +521,9 @@
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender_addActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel24">
                       <Properties>
@@ -551,7 +563,7 @@
                         <Property name="text" type="java.lang.String" value="Total"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="label_vender_total">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="0.0"/>
                       </Properties>
@@ -563,7 +575,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable8">
+                        <Component class="javax.swing.JTable" name="jtable_vender_cliente">
                           <Properties>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="46" green="46" red="46" type="rgb"/>
@@ -592,10 +604,13 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtable_vender_clienteMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="jTextField27">
+                    <Component class="javax.swing.JTextField" name="txtf_vender_pesquisar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Ubuntu" size="15" style="0"/>
@@ -615,7 +630,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton5">
+                    <Component class="javax.swing.JButton" name="btn_vender_pesquisar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="c6" green="94" red="28" type="rgb"/>
@@ -634,6 +649,9 @@
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vender_pesquisarActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>

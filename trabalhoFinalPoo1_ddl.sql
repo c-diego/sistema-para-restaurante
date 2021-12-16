@@ -30,11 +30,12 @@ CREATE TABLE `cliente` (
 );
 
 CREATE TABLE `pedido` (
-  `fk_prato` int PRIMARY KEY,
+  `fk_prato` int NOT NULL,
   `fk_cliente` int NOT NULL,
   `quantidade` int NOT NULL,
   `preco` float NOT NULL,
-  `numero` int NOT NULL
+  `numero` int NOT NULL,
+   primary key (`fk_prato`, `fk_cliente`, `numero`)
 );
 
 ALTER TABLE `pedido` ADD FOREIGN KEY (`fk_prato`) REFERENCES `prato` (`id`);

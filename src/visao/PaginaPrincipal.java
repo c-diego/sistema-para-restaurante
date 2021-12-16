@@ -5,6 +5,7 @@ import dao.PratoDAO;
 import dao.UsuarioDAO;
 import dao.PedidoDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private PedidoDAO pedidoDao = new PedidoDAO();
     private List<Pedido> pedidos;
     private Pedido pedidoSelecionado;
+    
+    private ArrayList<Pedido> listaPedidos = new ArrayList<Pedido>(); 
     
     private int paginaAtual;
     
@@ -94,20 +97,20 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jtable_ven_menu = new javax.swing.JTable();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
+        btn_vender_can = new javax.swing.JButton();
+        btn_vender_ok = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
+        jtable_vender_pedido = new javax.swing.JTable();
+        btn_vender_rm = new javax.swing.JButton();
+        btn_vender_add = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        label_vender_total = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable8 = new javax.swing.JTable();
-        jTextField27 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        jtable_vender_cliente = new javax.swing.JTable();
+        txtf_vender_pesquisar = new javax.swing.JTextField();
+        btn_vender_pesquisar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         lab_selected_customer = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -290,26 +293,36 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             jtable_ven_menu.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
-        jButton21.setBackground(new java.awt.Color(255, 100, 100));
-        jButton21.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton21.setForeground(new java.awt.Color(70, 70, 70));
-        jButton21.setText("Cancelar");
-        jButton21.setBorder(null);
-        jButton21.setBorderPainted(false);
-        jButton21.setContentAreaFilled(false);
-        jButton21.setOpaque(true);
+        btn_vender_can.setBackground(new java.awt.Color(255, 100, 100));
+        btn_vender_can.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_vender_can.setForeground(new java.awt.Color(70, 70, 70));
+        btn_vender_can.setText("Cancelar");
+        btn_vender_can.setBorder(null);
+        btn_vender_can.setBorderPainted(false);
+        btn_vender_can.setContentAreaFilled(false);
+        btn_vender_can.setOpaque(true);
+        btn_vender_can.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender_canActionPerformed(evt);
+            }
+        });
 
-        jButton22.setBackground(new java.awt.Color(0, 255, 144));
-        jButton22.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton22.setForeground(new java.awt.Color(70, 70, 70));
-        jButton22.setText("Finalizar");
-        jButton22.setBorder(null);
-        jButton22.setBorderPainted(false);
-        jButton22.setContentAreaFilled(false);
-        jButton22.setOpaque(true);
+        btn_vender_ok.setBackground(new java.awt.Color(0, 255, 144));
+        btn_vender_ok.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_vender_ok.setForeground(new java.awt.Color(70, 70, 70));
+        btn_vender_ok.setText("Finalizar");
+        btn_vender_ok.setBorder(null);
+        btn_vender_ok.setBorderPainted(false);
+        btn_vender_ok.setContentAreaFilled(false);
+        btn_vender_ok.setOpaque(true);
+        btn_vender_ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender_okActionPerformed(evt);
+            }
+        });
 
-        jTable6.setForeground(new java.awt.Color(70, 70, 70));
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_vender_pedido.setForeground(new java.awt.Color(70, 70, 70));
+        jtable_vender_pedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -336,32 +349,42 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable6.getTableHeader().setReorderingAllowed(false);
-        jScrollPane6.setViewportView(jTable6);
-        if (jTable6.getColumnModel().getColumnCount() > 0) {
-            jTable6.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable6.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable6.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable6.getColumnModel().getColumn(2).setMaxWidth(100);
+        jtable_vender_pedido.getTableHeader().setReorderingAllowed(false);
+        jScrollPane6.setViewportView(jtable_vender_pedido);
+        if (jtable_vender_pedido.getColumnModel().getColumnCount() > 0) {
+            jtable_vender_pedido.getColumnModel().getColumn(0).setMinWidth(50);
+            jtable_vender_pedido.getColumnModel().getColumn(0).setMaxWidth(50);
+            jtable_vender_pedido.getColumnModel().getColumn(2).setMinWidth(100);
+            jtable_vender_pedido.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
-        jButton23.setBackground(new java.awt.Color(40, 148, 198));
-        jButton23.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton23.setForeground(new java.awt.Color(70, 70, 70));
-        jButton23.setText("Remover");
-        jButton23.setBorder(null);
-        jButton23.setBorderPainted(false);
-        jButton23.setContentAreaFilled(false);
-        jButton23.setOpaque(true);
+        btn_vender_rm.setBackground(new java.awt.Color(40, 148, 198));
+        btn_vender_rm.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_vender_rm.setForeground(new java.awt.Color(70, 70, 70));
+        btn_vender_rm.setText("Remover");
+        btn_vender_rm.setBorder(null);
+        btn_vender_rm.setBorderPainted(false);
+        btn_vender_rm.setContentAreaFilled(false);
+        btn_vender_rm.setOpaque(true);
+        btn_vender_rm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender_rmActionPerformed(evt);
+            }
+        });
 
-        jButton24.setBackground(new java.awt.Color(40, 148, 198));
-        jButton24.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton24.setForeground(new java.awt.Color(70, 70, 70));
-        jButton24.setText("Adicionar");
-        jButton24.setBorder(null);
-        jButton24.setBorderPainted(false);
-        jButton24.setContentAreaFilled(false);
-        jButton24.setOpaque(true);
+        btn_vender_add.setBackground(new java.awt.Color(40, 148, 198));
+        btn_vender_add.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_vender_add.setForeground(new java.awt.Color(70, 70, 70));
+        btn_vender_add.setText("Adicionar");
+        btn_vender_add.setBorder(null);
+        btn_vender_add.setBorderPainted(false);
+        btn_vender_add.setContentAreaFilled(false);
+        btn_vender_add.setOpaque(true);
+        btn_vender_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender_addActionPerformed(evt);
+            }
+        });
 
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Ubuntu", 0, 19)); // NOI18N
@@ -378,10 +401,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
         jLabel2.setText("Total");
 
-        jLabel3.setText("0.0");
+        label_vender_total.setText("0.0");
 
-        jTable8.setForeground(new java.awt.Color(70, 70, 70));
-        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_vender_cliente.setForeground(new java.awt.Color(70, 70, 70));
+        jtable_vender_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -403,25 +426,35 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane8.setViewportView(jTable8);
-        if (jTable8.getColumnModel().getColumnCount() > 0) {
-            jTable8.getColumnModel().getColumn(0).setMinWidth(150);
-            jTable8.getColumnModel().getColumn(0).setMaxWidth(150);
+        jtable_vender_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_vender_clienteMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(jtable_vender_cliente);
+        if (jtable_vender_cliente.getColumnModel().getColumnCount() > 0) {
+            jtable_vender_cliente.getColumnModel().getColumn(0).setMinWidth(150);
+            jtable_vender_cliente.getColumnModel().getColumn(0).setMaxWidth(150);
         }
 
-        jTextField27.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
-        jTextField27.setForeground(new java.awt.Color(70, 70, 70));
-        jTextField27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
-        jTextField27.setCaretColor(new java.awt.Color(70, 70, 70));
+        txtf_vender_pesquisar.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        txtf_vender_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        txtf_vender_pesquisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 200, 200)));
+        txtf_vender_pesquisar.setCaretColor(new java.awt.Color(70, 70, 70));
 
-        jButton5.setBackground(new java.awt.Color(40, 148, 198));
-        jButton5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(70, 70, 70));
-        jButton5.setText("Pesquisar");
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setOpaque(true);
+        btn_vender_pesquisar.setBackground(new java.awt.Color(40, 148, 198));
+        btn_vender_pesquisar.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        btn_vender_pesquisar.setForeground(new java.awt.Color(70, 70, 70));
+        btn_vender_pesquisar.setText("Pesquisar");
+        btn_vender_pesquisar.setBorder(null);
+        btn_vender_pesquisar.setBorderPainted(false);
+        btn_vender_pesquisar.setContentAreaFilled(false);
+        btn_vender_pesquisar.setOpaque(true);
+        btn_vender_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vender_pesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setForeground(new java.awt.Color(70, 70, 70));
@@ -447,14 +480,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                         .addContainerGap()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField27)
+                                                .addComponent(txtf_vender_pesquisar)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jButton5))
+                                                .addComponent(btn_vender_pesquisar))
                                             .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jLabel3)
+                                                .addComponent(label_vender_total)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -467,13 +500,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_vender_add, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_vender_rm, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_vender_can, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btn_vender_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,7 +515,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton24, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_vender_add, btn_vender_pesquisar});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,8 +532,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_vender_pesquisar)
+                            .addComponent(txtf_vender_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -510,16 +543,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vender_ok, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vender_can, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vender_rm, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vender_add, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(label_vender_total))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton24, jButton5, jTextField27});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_vender_add, btn_vender_pesquisar, txtf_vender_pesquisar});
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -2181,7 +2214,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         paginaAtual++;
         atualizar_pedidos_pedido();
     }//GEN-LAST:event_btn_pedidos_proximoActionPerformed
-
     private void atualizar_pedidos_pedido() {
         try {
             pedidos = pedidoDao.listar();
@@ -2211,7 +2243,161 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }       
     }
 //######################################### FIM ####################################################### 
+  
     
+    
+//######################################### tela vender ###############################################
+    private void btn_vender_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender_pesquisarActionPerformed
+        atualizar_vender_tabela_cliente();
+    }//GEN-LAST:event_btn_vender_pesquisarActionPerformed
+
+    private void jtable_vender_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_vender_clienteMouseClicked
+        int linha = jtable_vender_cliente.getSelectedRow();        
+        lab_selected_customer.setText(jtable_vender_cliente.getValueAt(linha, 0).toString());
+        
+        if (linha  < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }      
+        clienteSelecionado = clientes.get(linha);
+    }//GEN-LAST:event_jtable_vender_clienteMouseClicked
+
+    private void btn_vender_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender_addActionPerformed
+        int linha_cardapio = jtable_ven_menu.getSelectedRow();
+
+        
+        if (linha_cardapio < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um Prato.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if (clienteSelecionado == null) {
+            JOptionPane.showMessageDialog(null, "Selecione um Cliente.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;        
+        }
+        
+        boolean flag = false;
+        
+        Prato prato = pratos.get(linha_cardapio);
+        Pedido pedido = new Pedido(
+            prato.getId(),
+            clienteSelecionado.getId(),
+            1,
+            prato.getPreco(),
+            clienteSelecionado.getQtnPedidos()
+        );
+        
+        for (Pedido p : listaPedidos) {
+            if (pedido.getFk_prato() == p.getFk_prato()) {
+                flag = true;
+                p.setQuantidade(p.getQuantidade() + 1);
+                p.setPreco(prato.getPreco() * p.getQuantidade());
+                break;
+            }
+        }
+        
+        if (!flag) {
+            listaPedidos.add(pedido);
+        }
+        
+        atualizar_vender_tabela_pedido();
+    }//GEN-LAST:event_btn_vender_addActionPerformed
+
+    private void btn_vender_rmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender_rmActionPerformed
+        int linha = jtable_vender_pedido.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um pedido", "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+   
+        try {
+            pedidoSelecionado = listaPedidos.get(linha);
+            for (Pedido p : listaPedidos) {
+                if (p.getFk_prato() == pedidoSelecionado.getFk_prato()) {
+                    if (p.getQuantidade() > 1) {
+                        p.setQuantidade(p.getQuantidade() - 1);
+                        p.setPreco(pratoDao.buscarPorId(p.getFk_prato()).getPreco() * p.getQuantidade());
+                    } else {
+                        listaPedidos.remove(p);
+                    }
+                    break;
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        atualizar_vender_tabela_pedido();
+    }//GEN-LAST:event_btn_vender_rmActionPerformed
+
+    private void btn_vender_canActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender_canActionPerformed
+        listaPedidos = new ArrayList<>();
+        atualizar_vender_tabela_pedido();
+    }//GEN-LAST:event_btn_vender_canActionPerformed
+
+    private void btn_vender_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vender_okActionPerformed
+        try {
+            for (Pedido p : listaPedidos) {
+                System.out.println(p.getFk_prato());
+                pedidoDao.adicionar(p);
+            }
+            clienteSelecionado.setQtnPedidos(clienteSelecionado.getQtnPedidos() + 1);
+            clienteDao.alterar(clienteSelecionado);
+            
+            listaPedidos = new ArrayList<>();
+            atualizar_vender_tabela_pedido();
+            JOptionPane.showMessageDialog(null, "Compra finalizada.");
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_vender_okActionPerformed
+
+
+    private void atualizar_vender_tabela_cliente(){
+        try {
+            clientes = clienteDao.buscarPeloNome(txtf_vender_pesquisar.getText());
+            DefaultTableModel model
+                    = (DefaultTableModel) jtable_vender_cliente.getModel();
+            model.setNumRows(0);
+            for(int i = 0;i < clientes.size(); i++){
+                Cliente cliente = clientes.get(i);
+                model.addRow(new Object[]{
+                    cliente.getNome() + " " + 
+                    cliente.getSobrenome(),
+                    cliente.getTelefone(),
+                });
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void atualizar_vender_tabela_pedido(){
+        try {
+         float total = 0f;
+        DefaultTableModel model
+                = (DefaultTableModel) jtable_vender_pedido.getModel();
+        model.setNumRows(0);
+        for (Pedido p : listaPedidos) {
+            
+            Prato prato = pratoDao.buscarPorId(p.getFk_prato());
+            model.addRow(new Object[]{
+                p.getQuantidade(),
+                prato.getPrincipal() + " "
+                + prato.getSecundario() + " "
+                + prato.getCarne() + " "
+                + prato.getSalada() + " "
+                + prato.getAcompanhamento(),
+                p.getPreco()
+            });
+            
+            total += p.getPreco();
+        }
+        
+        label_vender_total.setText(String.valueOf(total));
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2238,18 +2424,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btn_pedidos_anterior;
     private javax.swing.JButton btn_pedidos_pesquisar;
     private javax.swing.JButton btn_pedidos_proximo;
+    private javax.swing.JButton btn_vender_add;
+    private javax.swing.JButton btn_vender_can;
+    private javax.swing.JButton btn_vender_ok;
+    private javax.swing.JButton btn_vender_pesquisar;
+    private javax.swing.JButton btn_vender_rm;
     private javax.swing.JComboBox<String> cbox_cargo;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -2276,16 +2461,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable8;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTable jtable_pedidos_cliente;
     private javax.swing.JTable jtable_pedidos_pedido;
     private javax.swing.JTable jtable_usuario;
     private javax.swing.JTable jtable_ven_menu;
+    private javax.swing.JTable jtable_vender_cliente;
+    private javax.swing.JTable jtable_vender_pedido;
     private javax.swing.JLabel lab_selected_customer;
     private javax.swing.JLabel label_pedidos_nome_cliente;
     private javax.swing.JLabel label_pedidos_total;
+    private javax.swing.JLabel label_vender_total;
     private javax.swing.JPasswordField pswd_senha;
     private javax.swing.JTextField txtf_acompanhamento;
     private javax.swing.JTextField txtf_carne;
@@ -2306,5 +2491,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtf_principal;
     private javax.swing.JTextField txtf_salada;
     private javax.swing.JTextField txtf_secundario;
+    private javax.swing.JTextField txtf_vender_pesquisar;
     // End of variables declaration//GEN-END:variables
 }
