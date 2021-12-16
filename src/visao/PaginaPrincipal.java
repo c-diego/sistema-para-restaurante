@@ -2138,6 +2138,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 //######################################### FIM #######################################################     
     
     
+//######################################### Tela Pedidos ####################################################### 
     private void btn_pedidos_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidos_pesquisarActionPerformed
         
         try {
@@ -2209,7 +2210,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }       
     }
-
+//######################################### FIM ####################################################### 
     
     
     
