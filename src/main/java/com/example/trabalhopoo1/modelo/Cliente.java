@@ -1,4 +1,4 @@
-package modelo;
+package com.example.trabalhopoo1.modelo;
 
 public class Cliente {
     private int id;

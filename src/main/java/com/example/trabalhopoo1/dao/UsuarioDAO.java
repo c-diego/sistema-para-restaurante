@@ -1,6 +1,4 @@
-package dao;
-
-//@author diego
+package com.example.trabalhopoo1.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import jdbc.Conexao;
-import modelo.Usuario;
+import com.example.trabalhopoo1.jdbc.Conexao;
+import com.example.trabalhopoo1.modelo.Usuario;
 
 public class UsuarioDAO {
     

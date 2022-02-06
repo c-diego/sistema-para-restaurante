@@ -1,6 +1,4 @@
-package modelo;
-
-//@author diego
+package com.example.trabalhopoo1.modelo;
 
 public class Usuario {
     private int id;

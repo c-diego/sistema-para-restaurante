@@ -1,4 +1,4 @@
-package modelo;
+package com.example.trabalhopoo1.modelo;
  
 public class Prato {
     private int id;
@@ -8,8 +8,9 @@ public class Prato {
     private String salada;
     private String acompanhamento;
     private float preco;
+    private boolean status;
 
-    public Prato(int id, String principal, String secundario, String carne, String salada, String acompanhamento, float preco) {
+    public Prato(int id, String principal, String secundario, String carne, String salada, String acompanhamento, float preco, boolean status) {
         this.id = id;
         this.principal = principal;
         this.secundario = secundario;
@@ -17,15 +18,17 @@ public class Prato {
         this.salada = salada;
         this.acompanhamento = acompanhamento;
         this.preco = preco;
+        this.status = status;
     }
 
-    public Prato(String principal, String secundario, String carne, String salada, String acompanhamento, float preco) {
+    public Prato(String principal, String secundario, String carne, String salada, String acompanhamento, float preco, boolean status) {
         this.principal = principal;
         this.secundario = secundario;
         this.carne = carne;
         this.salada = salada;
         this.acompanhamento = acompanhamento;
         this.preco = preco;
+        this.status = status;
     }
 
     public Prato() {
@@ -45,6 +48,8 @@ public class Prato {
     public void setAcompanhamento(String acompanhamento) { this.acompanhamento = acompanhamento; }
 
     public void setPreco(float preco) { this.preco = preco; }
+    
+    public void setStatus(boolean status) { this.status = status; }
 
     public int getId() { return id; }
 
@@ -59,5 +64,7 @@ public class Prato {
     public String getAcompanhamento() { return acompanhamento; }
 
     public float getPreco() { return preco; }
+    
+    public boolean getStatus() { return status; }
     
 }

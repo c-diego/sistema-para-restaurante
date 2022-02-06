@@ -1,5 +1,4 @@
-
-package dao;
+package com.example.trabalhopoo1.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import jdbc.Conexao;
-import modelo.Pedido;
+import com.example.trabalhopoo1.jdbc.Conexao;
+import com.example.trabalhopoo1.modelo.Pedido;
 
 public class PedidoDAO {
     public void adicionar(Pedido pedido) throws SQLException {
@@ -26,12 +25,11 @@ public class PedidoDAO {
         conexao.close();
     }
     
-    public List<Pedido>buscar(int numero, int cliente_id) throws SQLException {
+    public List<Pedido>listar() throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql = "SELECT * FROM pedido WHERE fk_cliente = ? AND numero = ?";
+        String sql = "SELECT * FROM pedido WHERE fk_prato LIKE ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1,cliente_id);
-        ps.setInt(2,numero);
+        ps.setString(1,"%");
         ResultSet rs = ps.executeQuery();
         List<Pedido> pedidos = new ArrayList<>();
         while(rs.next()) {
@@ -44,14 +42,12 @@ public class PedidoDAO {
         conexao.close();
         return pedidos;
     }
-    
-    public void remover(Pedido pedido) throws SQLException {
+        
+     public void remover(int fk_cliente) throws SQLException {
         Connection conexao = new Conexao().getConexao();
-        String sql = "DELETE FROM pedido WHERE fk_prato = ? AND fk_cliente = ? AND numero = ?";
+        String sql = "DELETE FROM pedido WHERE fk_cliente = ?";
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pedido.getFk_prato());
-        ps.setInt(2, pedido.getFk_cliente());
-        ps.setInt(3, pedido.getNumero());
+        ps.setInt(1, fk_cliente);
         ps.executeUpdate();
         ps.close();
         conexao.close();

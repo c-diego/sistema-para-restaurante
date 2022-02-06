@@ -1,5 +1,4 @@
-
-package modelo;
+package com.example.trabalhopoo1.modelo;
 
 public class Pedido {
     private int fk_prato;

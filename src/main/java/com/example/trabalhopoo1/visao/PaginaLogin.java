@@ -1,10 +1,9 @@
-package visao;
+package com.example.trabalhopoo1.visao;
 
-//@author diego
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import dao.UsuarioDAO;
-import modelo.Usuario;
+import com.example.trabalhopoo1.dao.UsuarioDAO;
+import com.example.trabalhopoo1.modelo.Usuario;
 
 public class PaginaLogin extends javax.swing.JFrame {
 
@@ -25,7 +24,7 @@ public class PaginaLogin extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Quentinhas - Login");
+        setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(200, 200));
         setResizable(false);
