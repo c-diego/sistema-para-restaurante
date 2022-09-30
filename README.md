@@ -1,10 +1,10 @@
-# Trabalho de POO1
+# Trabalho Final de Programação Orientada a Objetos 
 
-  Esse programa é um sistema de controle de vendas de restaurante feito em dupla para a matéria de Programação Orientada a Objetos.
+## Sistema de controle de vendas para restaurante.
 
   Os requisitos do trabalho são:
 
   - 4 CRUDs.
   - Deverá conter autenticação, login, senha - com cadastro de usuários.
-  - Simulação de uma venda, **não precisa controlar estoque**.
+  - Simulação de uma venda.
   - 2 perfis de usuários.
