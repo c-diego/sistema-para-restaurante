@@ -3,6 +3,7 @@ package com.example.trabalhopoo1.visao;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import com.example.trabalhopoo1.dao.UsuarioDAO;
+import com.example.trabalhopoo1.jdbc.Conexao;
 import com.example.trabalhopoo1.modelo.Usuario;
 
 public class PaginaLogin extends javax.swing.JFrame {
@@ -169,6 +170,8 @@ public class PaginaLogin extends javax.swing.JFrame {
 
     public static void main(String args[]) {
 
+        Conexao con = new Conexao();
+        con.createTables();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
